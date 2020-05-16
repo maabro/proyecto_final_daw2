@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('pages.home');
+Route::get('/leagues', 'LeagueController@index')->name('pages.leagues');
+Route::get('/leagues/{league_tag}', 'LeagueController@show')->name('pages.league');
