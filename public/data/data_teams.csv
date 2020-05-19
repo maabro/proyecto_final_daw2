@@ -1,266 +1,300 @@
-T1,e144,RSC Anderlecht,Anderlecht,B1
-T2,e139,Club Brugge,Club Brugge,B1
-T3,e148,Cercle Brugge,Cercle Brugge,B1
-T4,e154,KV Oostende,KV Oostende,B1
-T5,e149,SV Zulte Waregem,Zulte Waregem,B1
-T6,e150,KV Kortrijk,Kortrijk,B1
-T7,e146,KAA Gent,Gent,B1
-T8,e151,Waasland-Beveren,Waasland-Beveren,B1
-T9,e143,R. Charleroi SC,Charleroi,B1
-T10,e140,Royal Antwerp FC,Royal Antwerp,B1
-T11,e145,Standard Liège,Standard Liège,B1
-T12,e152,KV Mechelen,KV Mechelen,B1
-T13,e141,KRC Genk,Genk,B1
-T14,e153,R. Mouscron-Péruwelz,Royal Mouscron,B1
-T15,e142,Sint-Truidense VV,St.Truidense,B1
-T16,e147,KAS Eupen,Eupen,B1
-T17,e041,Bayern München,Bayern M,D1
-T18,e042,Borussia Dortmund,Dortmund,D1
-T19,e043,RB Leipzig,RB Leipzig,D1
-T20,e044,Borussia M'gladbach,M'gladbach,D1
-T21,e045,Bayer 04 Leverkusen,Leverkusen,D1
-T22,e046,FC Schalke 04,Schalke 04,D1
-T23,e047,Wolfsburg,Wolfsburg,D1
-T24,e048,Freiburg,Freiburg,D1
-T25,e049,1899 Hoffenheim,Hoffenheim,D1
-T26,e050,1. FC Köln,Köln,D1
-T27,e051,1. FC Union Berlin,Union Berlin,D1
-T28,e052,Eintracht Frankfurt,E. Frankfurt,D1
-T29,e053,Hertha BSC,Hertha,D1
-T30,e054,FC Augsburg,Augsburg,D1
-T31,e055,1. FSV Mainz 05,Mainz 05,D1
-T32,e056,Fortuna Düsseldorf,Fortuna,D1
-T33,e057,Werder Bremen,Bremen,D1
-T34,e058,SC Paderborn 07,Paderborn,D1
-T35,e226,Arminia Bielefeld,Bielefeld,D2
-T36,e241,VfB Stuttgart,Stuttgart,D2
-T37,e240,Hamburger SV,HSV,D2
-T38,e242,1. FC Heidenheim,Heidenheim,D2
-T39,e234,SpVgg Greuther Fürth,Fürth,D2
-T40,e239,Darmstadt 98,Darmstadt,D2
-T41,e238,Holstein Kiel,Kiel,D2
-T42,e236,Erzgebirge Aue,Aue,D2
-T43,e232,Hannover 96,Hannover,D2
-T44,e237,SSV Jahn Regensburg,Regensburg,D2
-T45,e227,FC St. Pauli,St. Pauli,D2
-T46,e228,VfL Osnabrück,Osnabrück,D2
-T47,e243,SV Sandhausen,Sandhausen,D2
-T48,e231,1. FC Nürnberg,Nürnberg,D2
-T49,e233,VfL Bochum,Bochum,D2
-T50,e229,Wehen Wiesbaden,Wehen,D2
-T51,e235,Karlsruher SC,Karlsruher,D2
-T52,e230,Dynamo Dresden,Dresden,D2
-T53,e001,Liverpool,Liverpool,E0
-T54,e002,Manchester City,Man City,E0
-T55,e003,Leicester City,Leicester,E0
-T56,e004,Chelsea,Chelsea,E0
-T57,e005,Manchester United,Man United,E0
-T58,e006,Wolverhampton,Wolverhampton,E0
-T59,e007,Sheffield United,Sheffield Utd,E0
-T60,e008,Tottenham,Tottenham,E0
-T61,e009,Arsenal,Arsenal,E0
-T62,e010,Burnley,Burnley,E0
-T63,e011,Crystal Palace,Crystal Palace,E0
-T64,e012,Everton,Everton,E0
-T65,e013,Newcastle United,Newcastle,E0
-T66,e014,Southampton,Southampton,E0
-T67,e015,Brighton & Hove Albion,Brighton,E0
-T68,e016,West Ham United,West Ham,E0
-T69,e017,Watford,Watford,E0
-T70,e018,Bournemouth,Bournemouth,E0
-T71,e020,Aston Villa,Aston Villa,E0
-T72,e019,Norwich City,Norwich,E0
-T73,e156,Leeds United,Leeds,E1
-T74,e155,West Bromwich Albion,West Brom,E1
-T75,e157,Fulham,Fulham,E1
-T76,e158,Brentford,Brentford,E1
-T77,e160,Nottingham Forest,Forest,E1
-T78,e161,Preston North End,Preston,E1
-T79,e159,Bristol City,Bristol City,E1
-T80,e163,Millwall,Millwall,E1
-T81,e162,Cardiff City,Cardiff,E1
-T82,e165,Blackburn Rovers,Blackburn,E1
-T83,e166,Swansea City,Swansea,E1
-T84,e164,Derby County,Derby,E1
-T85,e169,Queens Park Rangers,QPR,E1
-T86,e173,Reading,Reading,E1
-T87,e171,Sheffield Wednesday,Sheffield Wed,E1
-T88,e170,Birmingham City,Birmingham,E1
-T89,e174,Stoke City,Stoke,E1
-T90,e177,Huddersfield Town,Huddersfield,E1
-T91,e167,Middlesbrough,Middlesbrough,E1
-T92,e176,Wigan Athletic,Wigan,E1
-T93,e168,Hull City,Hull,E1
-T94,e175,Charlton Athletic,Charlton,E1
-T95,e178,Luton Town,Luton,E1
-T96,e172,Barnsley,Barnsley,E1
-T97,e199,Coventry City,Coventry,E2
-T98,e180,Rotherham United,Rotherham,E2
-T99,e179,Oxford United,Oxford Utd,E2
-T100,e198,Portsmouth,Portsmouth,E2
-T101,e201,Fleetwood Town,Fleetwood,E2
-T102,e186,Peterborough United,Peterborough Utd,E2
-T103,e200,Sunderland,Sunderland,E2
-T104,e187,Wycombe Wanderers,Wycombe,E2
-T105,e191,Doncaster Rovers,Doncaster,E2
-T106,e184,Ipswich Town,Ipswich,E2
-T107,e183,Gillingham,Gillingham,E2
-T108,e195,Burton Albion,Burton,E2
-T109,e188,Blackpool,Blackpool,E2
-T110,e189,Bristol Rovers,Bristol Rovers,E2
-T111,e192,Lincoln City,Lincoln,E2
-T112,e190,Shrewsbury Town,Shrewsbury,E2
-T113,e196,Accrington Stanley,Accrington,E2
-T114,e181,Milton Keynes Dons,MK Dons,E2
-T115,e194,Rochdale,Rochdale,E2
-T116,e197,AFC Wimbledon,Wimbledon,E2
-T117,e185,Tranmere Rovers,Tranmere,E2
-T118,e193,Southend United,Southend Utd,E2
-T119,e182,Bolton Wanderers,Bolton,E2
-T120,e203,Crewe Alexandra,Crewe,E3
-T121,e206,Swindon Town,Swindon,E3
-T122,e214,Plymouth Argyle,Plymouth,E3
-T123,e220,Exeter City,Exeter,E3
-T124,e212,Cheltenham Town,Cheltenham,E3
-T125,e211,Colchester United,Colchester,E3
-T126,e208,Northampton Town,Northampton,E3
-T127,e207,Port Vale,Port Vale,E3
-T128,e204,Bradford City,Bradford,E3
-T129,e225,Salford City,Salford,E3
-T130,e222,Forest Green Rovers,Forest Green,E3
-T131,e224,Crawley Town,Crawley,E3
-T132,e202,Grimsby Town,Grimsby,E3
-T133,e205,Walsall,Walsall,E3
-T134,e216,Newport County,Newport,E3
-T135,e209,Cambridge United,Cambridge,E3
-T136,e218,Leyton Orient,Leyton Orient,E3
-T137,e215,Carlisle United,Carlisle,E3
-T138,e210,Oldham Athletic,Oldham,E3
-T139,e219,Scunthorpe United,Scunthorpe,E3
-T140,e213,Mansfield Town,Mansfield,E3
-T141,e217,Morecambe,Morecambe,E3
-T142,e221,Macclesfield Town,Macclesfield,E3
-T143,e223,Stevenage,Stevenage,E3
-T144,e059,Paris Saint-Germain,PSG,F1
-T145,e060,Olympique de Marseille,Marseille,F1
-T146,e061,Stade Rennais,Rennes,F1
-T147,e062,Lille OSC,Lille,F1
-T148,e063,OGC Nice,Nice,F1
-T149,e064,Stade de Reims,Reims,F1
-T150,e065,Olympique Lyonnais,Lyon,F1
-T151,e066,Montpellier,Montpellier,F1
-T152,e067,AS Monaco,AS Monaco,F1
-T153,e069,Angers,Angers,F1
-T154,e068,Strasbourg,Strasbourg,F1
-T155,e070,FC Girondins de Bordeaux,Bordeaux,F1
-T156,e071,FC Nantes,Nantes,F1
-T157,e072,Stade Brestois 29,Brest,F1
-T158,e073,FC Metz,Metz,F1
-T159,e074,Dijon Football Côte d'Or,Dijon,F1
-T160,e075,AS Saint-Étienne,Saint-Étienne,F1
-T161,e076,Nîmes Olympique,Nîmes,F1
-T162,e077,Amiens SC,Amiens,F1
-T163,e078,FC Toulouse,Toulouse,F1
-T164,e248,FC Lorient,Lorient,F2
-T165,e245,RC Lens,Lens,F2
-T166,e250,AC Ajaccio,AC Ajaccio,F2
-T167,e246,ES Troyes AC,Troyes,F2
-T168,e258,Clermont Foot 63,Clermont,F2
-T169,e251,Le Havre,Le Havre,F2
-T170,e259,Valenciennes FC,Valenciennes,F2
-T171,e247,EA Guingamp,Guingamp,F2
-T172,e255,Grenoble,Grenoble,F2
-T173,e263,FC Chambly Oise,Chambly,F2
-T174,e244,AJ Auxerre,Auxerre,F2
-T175,e257,Nancy,Nancy,F2
-T176,e254,Caen,Caen,F2
-T177,e249,FC Sochaux,Sochaux,F2
-T178,e253,Châteauroux,Châteauroux,F2
-T179,e262,Rodez AF,Rodez,F2
-T180,e260,Paris FC,Paris FC,F2
-T181,e252,Chamois Niortais,Chamois,F2
-T182,e256,Le Mans FC,Le Mans,F2
-T183,e261,US Orléans,Orléans,F2
-T184,e099,Juventus,Juventus,I1
-T185,e108,Lazio,Lazio,I1
-T186,e107,Inter,Inter,I1
-T187,e098,Atalanta,Atalanta,I1
-T188,e110,Roma,Roma,I1
-T189,e113,Napoli,Napoli,I1
-T190,e103,AC Milan,Milan,I1
-T191,e109,Hellas Verona,Verona,I1
-T192,e101,Parma Calcio,Parma,I1
-T193,e097,Bologna FC,Bologna,I1
-T194,e115,US Sassuolo,Sassuolo,I1
-T195,e114,Cagliari,Cagliari,I1
-T196,e104,AC Fiorentina,Fiorentina,I1
-T197,e105,Udinese,Udinese,I1
-T198,e106,Torino FC,Torino,I1
-T199,e111,Sampdoria,Sampdoria,I1
-T200,e112,Genoa,Genoa,I1
-T201,e100,US Lecce,Lecce,I1
-T202,e116,Sociedad Polideportiva Ars et Labor,SPAL,I1
-T203,e102,Brescia FC,Brescia,I1
-T204,e276,Benevento,Benevento,I2
-T205,e272,FC Crotone,Crotone,I2
-T206,e278,Frosinone,Frosinone,I2
-T207,e283,Pordenone,Pordenone,I2
-T208,e274,Spezia,Spezia,I2
-T209,e271,AS Cittadella,Cittadella,I2
-T210,e269,Salernitana,Salernitana,I2
-T211,e265,ChievoVerona,Chievo,I2
-T212,e267,Empoli FC,Empoli,I2
-T213,e281,Virtus Entella,Entella,I2
-T214,e275,Pisa,Pisa,I2
-T215,e266,AC Perugia,Perugia,I2
-T216,e279,Juve Stabia,Juve Stabia,I2
-T217,e280,Pescara,Pescara,I2
-T218,e268,Ascoli,Ascoli,I2
-T219,e264,Venezia,Venezia,I2
-T220,e277,US Cremonese,Cremonese,I2
-T221,e282,Trapani,Trapani,I2
-T222,e270,Cosenza,Cosenza,I2
-T223,e273,AS Livorno,Livorno,I2
-T224,e028,FC Barcelona,Barcelona,SP1
-T225,e029,Real Madrid CF,Real Madrid,SP1
-T226,e030,Sevilla FC,Sevilla,SP1
-T227,e021,Real Sociedad SAD,Real Sociedad,SP1
-T228,e022,Getafe CF,Getafe,SP1
-T229,e023,Atlético Madrid,Atl Madrid,SP1
-T230,e024,Valencia CF,Valencia,SP1
-T231,e025,Villarreal CF,Villarreal,SP1
-T232,e026,Granada CF,Granada,SP1
-T233,e027,Athletic Club Bilbao,Athletic Bilbao,SP1
-T234,e031,CA Osasuna,Osasuna,SP1
-T235,e032,Real Betis,Betis,SP1
-T236,e033,Levante UD,Levante,SP1
-T237,e034,Deportivo Alavés,Alavés,SP1
-T238,e035,Real Valladolid,Valladolid,SP1
-T239,e036,SD Eibar,Eibar,SP1
-T240,e037,Celta Vigo,Celta,SP1
-T241,e038,RCD Mallorca,Mallorca,SP1
-T242,e039,CD Leganés,Leganés,SP1
-T243,e040,RCD Espanyol,Espanyol,SP1
-T244,e129,Cádiz CF,Cádiz,SP2
-T245,e117,Real Zaragoza,Zaragoza,SP2
-T246,e128,UD Almería,Almería,SP2
-T247,e133,SD Huesca,Huesca,SP2
-T248,e132,Girona FC,Girona,SP2
-T249,e123,Elche CF,Elche,SP2
-T250,e136,CD Mirandés,Mirandés,SP2
-T251,e126,Sporting Gijón,Sporting,SP2
-T252,e134,AD Alcorcón,Alcorcón,SP2
-T253,e130,SD Ponferradina,Ponferradina,SP2
-T254,e118,Rayo Vallecano,Rayo Vallecano,SP2
-T255,e119,CD Tenerife,Tenerife,SP2
-T256,e137,CF Fuenlabrada,Fuenlabrada,SP2
-T257,e131,UD Las Palmas,Las Palmas,SP2
-T258,e120,Málaga CF,Málaga,SP2
-T259,e127,CD Numancia,Numancia,SP2
-T260,e125,Real Oviedo,Real Oviedo,SP2
-T261,e124,Albacete Balompié,Albacete,SP2
-T262,e121,Deportivo La Coruña,Deportivo,SP2
-T263,e135,CD Lugo,Lugo,SP2
-T264,e138,Extremadura UD,Extremadura,SP2
-T265,e122,Racing de Santander,Racing,SP2
-T266,e284,KSC Lokeren,Lokeren,B1
+T1,e144,RSC Anderlecht,Anderlecht
+T2,e139,Club Brugge,Club Brugge
+T3,e148,Cercle Brugge,Cercle Brugge
+T4,e154,KV Oostende,KV Oostende
+T5,e149,SV Zulte Waregem,Zulte Waregem
+T6,e150,KV Kortrijk,Kortrijk
+T7,e146,KAA Gent,Gent
+T8,e151,Waasland-Beveren,Waasland-Beveren
+T9,e143,R. Charleroi SC,Charleroi
+T10,e140,Royal Antwerp FC,Royal Antwerp
+T11,e145,Standard Liège,Standard Liège
+T12,e152,KV Mechelen,KV Mechelen
+T13,e141,KRC Genk,Genk
+T14,e153,R. Mouscron-Péruwelz,Royal Mouscron
+T15,e142,Sint-Truidense VV,St.Truidense
+T16,e147,KAS Eupen,Eupen
+T17,e041,Bayern München,Bayern M
+T18,e042,Borussia Dortmund,Dortmund
+T19,e043,RB Leipzig,RB Leipzig
+T20,e044,Borussia M'gladbach,M'gladbach
+T21,e045,Bayer 04 Leverkusen,Leverkusen
+T22,e046,FC Schalke 04,Schalke 04
+T23,e047,Wolfsburg,Wolfsburg
+T24,e048,Freiburg,Freiburg
+T25,e049,1899 Hoffenheim,Hoffenheim
+T26,e050,1. FC Köln,Köln
+T27,e051,1. FC Union Berlin,Union Berlin
+T28,e052,Eintracht Frankfurt,E. Frankfurt
+T29,e053,Hertha BSC,Hertha
+T30,e054,FC Augsburg,Augsburg
+T31,e055,1. FSV Mainz 05,Mainz 05
+T32,e056,Fortuna Düsseldorf,Fortuna
+T33,e057,Werder Bremen,Bremen
+T34,e058,SC Paderborn 07,Paderborn
+T35,e226,Arminia Bielefeld,Bielefeld
+T36,e241,VfB Stuttgart,Stuttgart
+T37,e240,Hamburger SV,HSV
+T38,e242,1. FC Heidenheim,Heidenheim
+T39,e234,SpVgg Greuther Fürth,Fürth
+T40,e239,Darmstadt 98,Darmstadt
+T41,e238,Holstein Kiel,Kiel
+T42,e236,Erzgebirge Aue,Aue
+T43,e232,Hannover 96,Hannover
+T44,e237,SSV Jahn Regensburg,Regensburg
+T45,e227,FC St. Pauli,St. Pauli
+T46,e228,VfL Osnabrück,Osnabrück
+T47,e243,SV Sandhausen,Sandhausen
+T48,e231,1. FC Nürnberg,Nürnberg
+T49,e233,VfL Bochum,Bochum
+T50,e229,Wehen Wiesbaden,Wehen
+T51,e235,Karlsruher SC,Karlsruher
+T52,e230,Dynamo Dresden,Dresden
+T53,e001,Liverpool,Liverpool
+T54,e002,Manchester City,Man City
+T55,e003,Leicester City,Leicester
+T56,e004,Chelsea,Chelsea
+T57,e005,Manchester United,Man United
+T58,e006,Wolverhampton,Wolverhampton
+T59,e007,Sheffield United,Sheffield Utd
+T60,e008,Tottenham,Tottenham
+T61,e009,Arsenal,Arsenal
+T62,e010,Burnley,Burnley
+T63,e011,Crystal Palace,Crystal Palace
+T64,e012,Everton,Everton
+T65,e013,Newcastle United,Newcastle
+T66,e014,Southampton,Southampton
+T67,e015,Brighton & Hove Albion,Brighton
+T68,e016,West Ham United,West Ham
+T69,e017,Watford,Watford
+T70,e018,Bournemouth,Bournemouth
+T71,e020,Aston Villa,Aston Villa
+T72,e019,Norwich City,Norwich
+T73,e156,Leeds United,Leeds
+T74,e155,West Bromwich Albion,West Brom
+T75,e157,Fulham,Fulham
+T76,e158,Brentford,Brentford
+T77,e160,Nottingham Forest,Forest
+T78,e161,Preston North End,Preston
+T79,e159,Bristol City,Bristol City
+T80,e163,Millwall,Millwall
+T81,e162,Cardiff City,Cardiff
+T82,e165,Blackburn Rovers,Blackburn
+T83,e166,Swansea City,Swansea
+T84,e164,Derby County,Derby
+T85,e169,Queens Park Rangers,QPR
+T86,e173,Reading,Reading
+T87,e171,Sheffield Wednesday,Sheffield Wed
+T88,e170,Birmingham City,Birmingham
+T89,e174,Stoke City,Stoke
+T90,e177,Huddersfield Town,Huddersfield
+T91,e167,Middlesbrough,Middlesbrough
+T92,e176,Wigan Athletic,Wigan
+T93,e168,Hull City,Hull
+T94,e175,Charlton Athletic,Charlton
+T95,e178,Luton Town,Luton
+T96,e172,Barnsley,Barnsley
+T97,e199,Coventry City,Coventry
+T98,e180,Rotherham United,Rotherham
+T99,e179,Oxford United,Oxford Utd
+T100,e198,Portsmouth,Portsmouth
+T101,e201,Fleetwood Town,Fleetwood
+T102,e186,Peterborough United,Peterborough Utd
+T103,e200,Sunderland,Sunderland
+T104,e187,Wycombe Wanderers,Wycombe
+T105,e191,Doncaster Rovers,Doncaster
+T106,e184,Ipswich Town,Ipswich
+T107,e183,Gillingham,Gillingham
+T108,e195,Burton Albion,Burton
+T109,e188,Blackpool,Blackpool
+T110,e189,Bristol Rovers,Bristol Rovers
+T111,e192,Lincoln City,Lincoln
+T112,e190,Shrewsbury Town,Shrewsbury
+T113,e196,Accrington Stanley,Accrington
+T114,e181,Milton Keynes Dons,MK Dons
+T115,e194,Rochdale,Rochdale
+T116,e197,AFC Wimbledon,Wimbledon
+T117,e185,Tranmere Rovers,Tranmere
+T118,e193,Southend United,Southend Utd
+T119,e182,Bolton Wanderers,Bolton
+T120,e203,Crewe Alexandra,Crewe
+T121,e206,Swindon Town,Swindon
+T122,e214,Plymouth Argyle,Plymouth
+T123,e220,Exeter City,Exeter
+T124,e212,Cheltenham Town,Cheltenham
+T125,e211,Colchester United,Colchester
+T126,e208,Northampton Town,Northampton
+T127,e207,Port Vale,Port Vale
+T128,e204,Bradford City,Bradford
+T129,e225,Salford City,Salford
+T130,e222,Forest Green Rovers,Forest Green
+T131,e224,Crawley Town,Crawley
+T132,e202,Grimsby Town,Grimsby
+T133,e205,Walsall,Walsall
+T134,e216,Newport County,Newport
+T135,e209,Cambridge United,Cambridge
+T136,e218,Leyton Orient,Leyton Orient
+T137,e215,Carlisle United,Carlisle
+T138,e210,Oldham Athletic,Oldham
+T139,e219,Scunthorpe United,Scunthorpe
+T140,e213,Mansfield Town,Mansfield
+T141,e217,Morecambe,Morecambe
+T142,e221,Macclesfield Town,Macclesfield
+T143,e223,Stevenage,Stevenage
+T144,e059,Paris Saint-Germain,PSG
+T145,e060,Olympique de Marseille,Marseille
+T146,e061,Stade Rennais,Rennes
+T147,e062,Lille OSC,Lille
+T148,e063,OGC Nice,Nice
+T149,e064,Stade de Reims,Reims
+T150,e065,Olympique Lyonnais,Lyon
+T151,e066,Montpellier,Montpellier
+T152,e067,AS Monaco,AS Monaco
+T153,e069,Angers,Angers
+T154,e068,Strasbourg,Strasbourg
+T155,e070,FC Girondins de Bordeaux,Bordeaux
+T156,e071,FC Nantes,Nantes
+T157,e072,Stade Brestois 29,Brest
+T158,e073,FC Metz,Metz
+T159,e074,Dijon Football Côte d'Or,Dijon
+T160,e075,AS Saint-Étienne,Saint-Étienne
+T161,e076,Nîmes Olympique,Nîmes
+T162,e077,Amiens SC,Amiens
+T163,e078,FC Toulouse,Toulouse
+T164,e248,FC Lorient,Lorient
+T165,e245,RC Lens,Lens
+T166,e250,AC Ajaccio,AC Ajaccio
+T167,e246,ES Troyes AC,Troyes
+T168,e258,Clermont Foot 63,Clermont
+T169,e251,Le Havre,Le Havre
+T170,e259,Valenciennes FC,Valenciennes
+T171,e247,EA Guingamp,Guingamp
+T172,e255,Grenoble,Grenoble
+T173,e263,FC Chambly Oise,Chambly
+T174,e244,AJ Auxerre,Auxerre
+T175,e257,Nancy,Nancy
+T176,e254,Caen,Caen
+T177,e249,FC Sochaux,Sochaux
+T178,e253,Châteauroux,Châteauroux
+T179,e262,Rodez AF,Rodez
+T180,e260,Paris FC,Paris FC
+T181,e252,Chamois Niortais,Chamois
+T182,e256,Le Mans FC,Le Mans
+T183,e261,US Orléans,Orléans
+T184,e099,Juventus,Juventus
+T185,e108,Lazio,Lazio
+T186,e107,Inter,Inter
+T187,e098,Atalanta,Atalanta
+T188,e110,Roma,Roma
+T189,e113,Napoli,Napoli
+T190,e103,AC Milan,Milan
+T191,e109,Hellas Verona,Verona
+T192,e101,Parma Calcio,Parma
+T193,e097,Bologna FC,Bologna
+T194,e115,US Sassuolo,Sassuolo
+T195,e114,Cagliari,Cagliari
+T196,e104,AC Fiorentina,Fiorentina
+T197,e105,Udinese,Udinese
+T198,e106,Torino FC,Torino
+T199,e111,Sampdoria,Sampdoria
+T200,e112,Genoa,Genoa
+T201,e100,US Lecce,Lecce
+T202,e116,Sociedad Polideportiva Ars et Labor,SPAL
+T203,e102,Brescia FC,Brescia
+T204,e276,Benevento,Benevento
+T205,e272,FC Crotone,Crotone
+T206,e278,Frosinone,Frosinone
+T207,e283,Pordenone,Pordenone
+T208,e274,Spezia,Spezia
+T209,e271,AS Cittadella,Cittadella
+T210,e269,Salernitana,Salernitana
+T211,e265,ChievoVerona,Chievo
+T212,e267,Empoli FC,Empoli
+T213,e281,Virtus Entella,Entella
+T214,e275,Pisa,Pisa
+T215,e266,AC Perugia,Perugia
+T216,e279,Juve Stabia,Juve Stabia
+T217,e280,Pescara,Pescara
+T218,e268,Ascoli,Ascoli
+T219,e264,Venezia,Venezia
+T220,e277,US Cremonese,Cremonese
+T221,e282,Trapani,Trapani
+T222,e270,Cosenza,Cosenza
+T223,e273,AS Livorno,Livorno
+T224,e028,FC Barcelona,Barcelona
+T225,e029,Real Madrid CF,Real Madrid
+T226,e030,Sevilla FC,Sevilla
+T227,e021,Real Sociedad SAD,Real Sociedad
+T228,e022,Getafe CF,Getafe
+T229,e023,Atlético Madrid,Atl Madrid
+T230,e024,Valencia CF,Valencia
+T231,e025,Villarreal CF,Villarreal
+T232,e026,Granada CF,Granada
+T233,e027,Athletic Club Bilbao,Athletic Bilbao
+T234,e031,CA Osasuna,Osasuna
+T235,e032,Real Betis,Betis
+T236,e033,Levante UD,Levante
+T237,e034,Deportivo Alavés,Alavés
+T238,e035,Real Valladolid,Valladolid
+T239,e036,SD Eibar,Eibar
+T240,e037,Celta Vigo,Celta
+T241,e038,RCD Mallorca,Mallorca
+T242,e039,CD Leganés,Leganés
+T243,e040,RCD Espanyol,Espanyol
+T244,e129,Cádiz CF,Cádiz
+T245,e117,Real Zaragoza,Zaragoza
+T246,e128,UD Almería,Almería
+T247,e133,SD Huesca,Huesca
+T248,e132,Girona FC,Girona
+T249,e123,Elche CF,Elche
+T250,e136,CD Mirandés,Mirandés
+T251,e126,Sporting Gijón,Sporting
+T252,e134,AD Alcorcón,Alcorcón
+T253,e130,SD Ponferradina,Ponferradina
+T254,e118,Rayo Vallecano,Rayo Vallecano
+T255,e119,CD Tenerife,Tenerife
+T256,e137,CF Fuenlabrada,Fuenlabrada
+T257,e131,UD Las Palmas,Las Palmas
+T258,e120,Málaga CF,Málaga
+T259,e127,CD Numancia,Numancia
+T260,e125,Real Oviedo,Real Oviedo
+T261,e124,Albacete Balompié,Albacete
+T262,e121,Deportivo La Coruña,Deportivo
+T263,e135,CD Lugo,Lugo
+T264,e138,Extremadura UD,Extremadura
+T265,e122,Racing de Santander,Racing
+T266,e284,KSC Lokeren,Lokeren
+T267,e285,Ingolstadt,Ingolstadt
+T268,e286,MSV Duisburg,Duisburg
+T269,e287,1. FC Kaiserslautern,Kaiserslautern
+T270,e288,Eintracht Braunschweig,Braunschweig
+T271,e289,Magdeburg,Magdeburg
+T272,e290,Bury,Bury
+T273,e291,Chesterfield,Chesterfield
+T274,e292,Notts County,Notts County
+T275,e293,Barnet,Barnet
+T276,e294,Yeovil Town,Yeovil
+T277,e295,Bourg-en-Bresse,FBBP
+T278,e296,Tours,Tours
+T279,e297,GFC Ajaccio,GFC Ajaccio
+T280,e298,Quevilly-Rouen Métropole,Quevilly-Rouen
+T281,e299,AS Béziers,Béziers
+T282,e300,Red Star,Red Star
+T283,e301,Avellino,Avellino
+T284,e302,Carpi,Carpi
+T285,e303,Novara,Novara
+T286,e304,Palermo,Palermo
+T287,e305,Pro Vercelli,Pro Vercelli
+T288,e306,Ternana,Ternana
+T289,e307,Foggia,Foggia
+T290,e308,Bari,Bari
+T291,e309,Cesena,Cesena
+T292,e310,Padova,Padova
+T293,e311,Lorca FC,Lorca
+T294,e312,Cultural Leonesa,C. Leonesa
+T295,e313,Córdoba,Córdoba
+T296,e028,Barcelona B,Barcelona B
+T297,e314,Sevilla Atlético,Sevilla Atlético
+T298,e315,Gimnàstic de Tarragona,Gimnàstic de Tarragona
+T299,e316,Reus Deportiu,Reus
+T300,e317,Rayo Majadahonda,Rayo Majadahonda
