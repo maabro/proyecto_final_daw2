@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') | Football stats</title>
+    <title>@yield('title') | Soccermarkt · Football stats</title>
+    <link rel="icon" type="image/svg" href="{{ asset('favicon.svg') }}" sizes="32x32">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->

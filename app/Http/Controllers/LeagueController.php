@@ -15,7 +15,7 @@ class LeagueController extends Controller
      */
     public function index()
     {
-        $leagues = DB::table('leagues')->get();
+        $leagues = League::all();
         return view('pages.leagues', ['leagues' => $leagues]);
     }
 
@@ -49,9 +49,9 @@ class LeagueController extends Controller
     public function show($league)
     {
         //dd($league);
-        $lg = DB::table('leagues')->where('league_tag','=',$league)->first();
-        //dd($lg);
-        return view('pages.league', compact('lg'));
+        $lg = DB::table('leagues')->where('league_tag','=',$league)->first();        
+        $teams = League::find($lg->league_id)->teams;        
+        return view('pages.league', compact('lg','teams'));
     }
 
     /**

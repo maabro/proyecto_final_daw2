@@ -12,8 +12,14 @@ class League extends Model
     protected $keyType = 'string';
     protected $table = 'leagues';
     
-    public function teams()
+    /*public function teams()
     {
-        return $this->hasMany('App\Team');
+        return $this->hasMany('App\Team','team_league_id',$this->primaryKey);
+    }*/
+
+    public function seasonsLeagues()
+    {
+        return $this->belongsToMany('App\Season','league_seasons',$this->primaryKey,'season_id');
     }
+
 }
