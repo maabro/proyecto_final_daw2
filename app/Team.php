@@ -14,10 +14,10 @@ class Team extends Model
     protected $keyType = 'string';
     protected $table = 'teams';
 
-    /*public function league()
+    public function league()
     {
-        return $this->belongsTo('App\League','team_league_id',$this->primaryKey);
-    }*/
+        return $this->belongsTo('App\League','team_league_id','league_id');
+    }
     
     public function homeTeamMatch()
     {
@@ -27,11 +27,6 @@ class Team extends Model
     public function awayTeamMatch()
     {
         return $this->hasMany('App\Match','match_at',$this->primaryKey);
-    }
-
-    public function seasonsTeams()
-    {
-        return $this->belongsToMany('App\Season','season_teams',$this->primaryKey,'season_id');
     }
 
     public function statsTeams()

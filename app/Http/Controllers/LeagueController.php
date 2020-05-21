@@ -49,9 +49,15 @@ class LeagueController extends Controller
     public function show($league)
     {
         //dd($league);
-        $lg = DB::table('leagues')->where('league_tag','=',$league)->first();        
-        $teams = League::find($lg->league_id)->teams;        
-        return view('pages.league', compact('lg','teams'));
+        $lg = DB::table('leagues')->where('league_tag','=',$league)->first();  
+        $teams = League::find($lg->league_id)->teams;
+        $count = 1;
+        foreach($teams as $team){
+            //dd($team->team_id);
+        }
+        
+             
+        return view('pages.league', compact('lg','teams','count'));
     }
 
     /**

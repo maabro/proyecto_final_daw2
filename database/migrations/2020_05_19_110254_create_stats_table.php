@@ -17,12 +17,12 @@ class CreateStatsTable extends Migration
             $table->string('stat_id',10)->primary();
             $table->string('stat_match',20);
             $table->string('stat_team',50);
-            $table->integer('stat_shots')->unsigned();
-            $table->integer('stat_shots_target')->unsigned();
-            $table->integer('stat_corners')->unsigned();
-            $table->integer('stat_fouls')->unsigned();
-            $table->integer('stat_yellow_card')->unsigned();
-            $table->integer('stat_red_card')->unsigned();
+            $table->integer('stat_shots')->unsigned()->nullable();
+            $table->integer('stat_shots_target')->unsigned()->nullable();
+            $table->integer('stat_corners')->unsigned()->nullable();
+            $table->integer('stat_fouls')->unsigned()->nullable();
+            $table->integer('stat_yellow_card')->unsigned()->nullable();
+            $table->integer('stat_red_card')->unsigned()->nullable();
 
             $table->foreign('stat_team')->references('team_id')->on('teams');
             $table->foreign('stat_match')->references('match_id')->on('matches');

@@ -28,10 +28,10 @@
                 <tbody>
                     @foreach($teams as $team)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
+                        <td>{{$count++}}</td>
                         <td>
                             <img src="/img/shields/{{$team->team_img}}.png" alt="{{$team->team_img}}" width="20">
-                            {{$team->team_name}}
+                            <a href="{{ route('pages.team', ['league_tag' => $lg->league_tag, 'team_tag' => $team->team_tag]) }}">{{$team->team_name}}</a>
                         </td>
                         <td>-</td>
                         <td>-</td>

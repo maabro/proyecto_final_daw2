@@ -22,14 +22,14 @@ class Match extends Model
         return $this->belongsTo('App\Team','match_at','team_id');
     }
 
-    public function seasonMatch()
-    {
-        return $this->belongsTo('App\Season','match_season','season_id');
-    }
-
     public function statsMatch()
     {
         return $this->hasMany('App\Stat','stat_match',$this->primaryKey);
+    }
+
+    public function league()
+    {
+        return $this->belongsTo('App\League','match_league','league_id');
     }
 
 }
