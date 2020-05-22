@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg" href="{{ asset('favicon.svg') }}" sizes="32x32">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://kit.fontawesome.com/02dda62dae.js" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">

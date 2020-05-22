@@ -17,3 +17,7 @@ header {
 .league-header {
     background-color: brown;
 }
+.match-header {
+    text-align: center;
+    align-items: center;
+}
