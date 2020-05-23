@@ -18,17 +18,7 @@ class MatchController extends Controller
     public function index()
     {
         $matches = Match::whereBetween('match_day', ['2020-06-03', '2020-06-07'])->get();
-
-
-        // foreach($matches as $match){
-        //     var_dump($match->homeTeam->team_name,$match->awayTeam->team_name.'<br>');
-        // }
-
-
-        //dd($matches['match_ht']);
-        
-
-        
+ 
         return view('pages.home',compact('matches'));
     }
 
@@ -81,7 +71,6 @@ class MatchController extends Controller
         $avergo_local = round($h/$nlocalmatch,2);
         $avergo_away = round($a/$nawaymatch,2);
         $avergo_total = round($total/($nlocalmatch + $nawaymatch),2);
-        //dd($avergo_away);
         
         /**
          * Variables porcentajes
@@ -90,25 +79,21 @@ class MatchController extends Controller
         // $home_per = ($h *100)/$total;
         // $away_per = ($h *100)/$total;
 
-        //dd($home_per);
         $goals = Arr::add([], 'home', $h);
         $goals = Arr::add($goals, 'away', $a);
         $goals = Arr::add($goals, 'total', $total);
         $goals = Arr::add($goals, 'avergo_local',$avergo_local);
         $goals = Arr::add($goals, 'avergo_away',$avergo_away);
         $goals = Arr::add($goals, 'avergo_total',$avergo_total);
-                    //->orWhere('match_at', '=', $home)->get();
-        //$a = $away->teamStats->stat_shots;
 
-        //return var_dump("h:".$h.", a: ".$a."<br>");
         return $goals;
     }
 
     private function bothTeamscore($home, $away)
     {
         //dd($home);
-        $bts = Match::where(function($query) use ($home,$away){
-            $query->whereIn('match_ht',[$home,$away])
+        $bts = Match::where(function($query1) use ($home,$away){
+            $query1->whereIn('match_ht',[$home,$away])
                     ->orWhere(function($query2) use ($home,$away){
                         $query2->whereIn('match_at',[$home,$away]);
                     });

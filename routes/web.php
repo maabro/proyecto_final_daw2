@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MatchController@index')->name('pages.home');
-Route::get('/leagues', 'LeagueController@index')->name('pages.leagues');
-Route::get('/leagues/{league_tag}', 'LeagueController@show')->name('pages.league');
-Route::get('/leagues/{league_tag}/teams/{team_tag}', 'TeamController@show')->name('pages.team');
-Route::get('/matches/{match}/{ht_tag}-vs-{at_tag}', 'MatchController@show')->name('pages.match');
+Route::get('leagues', 'LeagueController@index')->name('pages.leagues');
+Route::get('leagues/{league_tag}', 'LeagueController@show')->name('pages.league');
+Route::get('leagues/{league_tag}/teams/{team_tag}', 'TeamController@show')->name('pages.team');
+Route::get('matches/{match}/{ht_tag}-vs-{at_tag}', 'MatchController@show')->name('pages.match');

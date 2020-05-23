@@ -9,11 +9,12 @@
                 <tr>
                     <th>League</th>
                     <th>HW</th>
+                    <th>D</th>
                     <th>AW</th>
+                    <th>BTS</th>
                     <th>O.0,5</th>
                     <th>O.1,5</th>
-                    <th>O.2,5</th>
-                    <th>BTS</th>            
+                    <th>O.2,5</th>                               
                 </tr>
             </thead>
             <tbody>
@@ -23,9 +24,14 @@
                         <img class="league-flag" src="/img/flags/{{$lg->league_country_flag}}.png" alt="{{$lg->league_country_flag}}" width="20">
                         <a href="{{ route('pages.league', ['league_tag' => $lg->league_tag]) }}">{{$lg->league_name}}</a>
                     </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    @for($n = 0;$n < $results->count();$n++)
+                    @if($lg->league_id == $results[$n]['id'])
+                    <td>{{$results[$n]['res']['home']}}%</td>
+                    <td>{{$results[$n]['res']['draw']}}%</td>
+                    <td>{{$results[$n]['res']['away']}}%</td>
+                    <td>{{$results[$n]['bts']}}%</td>
+                    @endif
+                    @endfor
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>

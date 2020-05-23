@@ -16,6 +16,7 @@
                     <tr>
                         <th>Position</th>
                         <th>Name</th>
+                        <th>PTS</h>
                         <th>HW</th>
                         <th>D</th>
                         <th>AW</th>
@@ -33,6 +34,11 @@
                             <img src="/img/shields/{{$team->team_img}}.png" alt="{{$team->team_img}}" width="20">
                             <a href="{{ route('pages.team', ['league_tag' => $lg->league_tag, 'team_tag' => $team->team_tag]) }}">{{$team->team_name}}</a>
                         </td>
+                        @for($n = 0; $n < $points->count(); $n++)
+                        @if($team->team_id == $points[$n]['team_id'])
+                        <td>{{$points[$n]['point']}}</td>
+                        @endif
+                        @endfor
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
