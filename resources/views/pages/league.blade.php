@@ -14,16 +14,23 @@
             <table class="table table-sm">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Position</th>
+                        <th>Clas.</th>
                         <th>Name</th>
-                        <th>PTS</h>
-                        <th>HW</th>
+                        <th>MP</th>
+                        <th>W</th>
                         <th>D</th>
-                        <th>AW</th>
+                        <th>L</th>
+                        <th>GF</th>
+                        <th>GA</th>
+                        <th>GD</th>
+                        <th>PTS</th>
+                        <th>CS</th>
+                        <th>FTS</th>
+                        <th>YC</th>
+                        <th>RC</th>
+                        <th>Corner</th>
                         <th>BTS</th>
-                        <th>O0.5</th>
-                        <th>O1.5</th>
-                        <th>O2.5</th>
+                        <th>AVG</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,18 +41,21 @@
                             <img src="/img/shields/{{$team->team_img}}.png" alt="{{$team->team_img}}" width="20">
                             <a href="{{ route('pages.team', ['league_tag' => $lg->league_tag, 'team_tag' => $team->team_tag]) }}">{{$team->team_name}}</a>
                         </td>
-                        @for($n = 0; $n < $points->count(); $n++)
-                        @if($team->team_id == $points[$n]['team_id'])
-                        <td>{{$points[$n]['point']}}</td>
-                        @endif
-                        @endfor
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>{{$team->matches['total']}}</td>
+                        <td>{{$team->matches['wins']}}</td>
+                        <td>{{$team->matches['draws']}}</td>
+                        <td>{{$team->matches['loses']}}</td>
+                        <td>{{$team->goals_gf}}</td>
+                        <td>{{$team->goals_ga}}</td>
+                        <td>{{($team->goals_gf-$team->goals_ga > 0) ? "+".(string)($team->goals_gf-$team->goals_ga) : $team->goals_gf-$team->goals_ga}}</td>
+                        <td>{{$team->point}}</td>
+                        <td>{{$team->clean_sheets}}%</td>
+                        <td>{{$team->fts}}%</td>
+                        <td>{{$team->cards['yellow']}}</td>
+                        <td>{{$team->cards['red']}}</td>
+                        <td>{{$team->corners}}</td>
+                        <td>{{$team->bts}}%</td>
+                        <td>{{$team->avg}}</td>
                     </tr>
                     @endforeach
                 </tbody>

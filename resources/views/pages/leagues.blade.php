@@ -30,11 +30,11 @@
                     <td>{{$results[$n]['res']['draw']}}%</td>
                     <td>{{$results[$n]['res']['away']}}%</td>
                     <td>{{$results[$n]['bts']}}%</td>
+                    <td>{{$results[$n]['o0.5']}}%</td>
+                    <td>{{$results[$n]['o1.5']}}%</td>
+                    <td>{{$results[$n]['o2.5']}}%</td>
                     @endif
                     @endfor
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
             @endforeach
             </tbody>
