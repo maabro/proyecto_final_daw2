@@ -30,15 +30,224 @@
         </div>
         <hr>
         <div class="goal-market">
-            <h3>Goals market</h3>
+            <h4>Over goals match</h4>
+            <div class="goal-table">
+                <table class="table table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                            <th>{{$mt->homeTeam->team_name}}</th>
+                            <th>{{$mt->awayTeam->team_name}}</th>
+                            <th>Both teams</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Over 0.5</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Over 1.5</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Over 2.5</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Over 3.5</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Both teams to score</h4>
+                    <div class="bts-table">
+                        <table class="table table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>{{$mt->homeTeam->team_name}}</th>
+                                    <th>{{$mt->awayTeam->team_name}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Yes</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>No</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>               
+                </div>
+                <div class="col">
+                <h4>Clean sheet</h4>
+                <div class="cs-table">
+                    <table class="table table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th></th>
+                                <th>{{$mt->homeTeam->team_name}}</th>
+                                <th>{{$mt->awayTeam->team_name}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Yes</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>No</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                </div>
+            </div>
         </div>
         <hr>
-        <div class="coner-market">
-            <h3>Corners market</h3>
-        </div>
-        <hr>
-        <div class="card-market">
-            <h3>Cards market</h3>
+        <div class="row">
+            <div class="col">
+                <div class="corner-market">
+                    <h4>Over corners during the match</h4>
+                    <div class="corner-table">
+                        <table class="table table-sm">
+                            <thead  class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>{{$mt->homeTeam->team_name}}</th>
+                                    <th>{{$mt->awayTeam->team_name}}</th>
+                                    <th>Average</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Over 7.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 8.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 9.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 10.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 11.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 12.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 13.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="corner-market">
+                    <h4>Over cards during the match</h4>
+                    <div class="card-table">
+                        <table class="table table-sm">
+                            <thead  class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>{{$mt->homeTeam->team_name}}</th>
+                                    <th>{{$mt->awayTeam->team_name}}</th>
+                                    <th>Average</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Over 1.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 2.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 3.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 4.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 5.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 6.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Over 7.5</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
