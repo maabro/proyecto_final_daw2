@@ -37,14 +37,16 @@ function teamsResultsMatch($league,$team)
 
 function cornersTeam($team,$n)
 {
-    $db = DB::selectOne("select count(*) as co from (select distinct matches.* from stats inner join matches on matches.match_id = stats.stat_match where (matches.match_ht = ? or matches.match_at = ?) and (select sum(stat_corners) from stats where stat_match = matches.match_id) >= ?) as loquesea",[$team,$team,$n]);   
+    $db = DB::selectOne("select count(*) as co from (select distinct matches.* from stats inner join matches on matches.match_id = stats.stat_match 
+    where (matches.match_ht = ? or matches.match_at = ?) and (select sum(stat_corners) from stats 
+    where stat_match = matches.match_id) >= ?) as loquesea",[$team,$team,$n]);   
     return $db->co;
 }
 
 function cardsTeam($team,$n)
 {
-    $y = DB::selectOne("select count(*) as co from (select distinct matches.* from stats inner join matches on matches.match_id = stats.stat_match where (matches.match_ht = ? or matches.match_at = ?) and (select sum(stat_yellow_card)+sum(stat_red_card) from stats where stat_match = matches.match_id) >= ?) as loquesea",[$team,$team,$n]);
-    //$r = DB::selectOne("select count(*) as co from (select distinct matches.* from stats inner join matches on matches.match_id = stats.stat_match where (matches.match_ht = ? or matches.match_at = ?) and (select sum(stat_red_card) from stats where stat_match = matches.match_id) >= ?) as loquesea",[$team,$team,$n]);
-
+    $y = DB::selectOne("select count(*) as co from (select distinct matches.* from stats inner join matches on matches.match_id = stats.stat_match 
+    where (matches.match_ht = ? or matches.match_at = ?) and (select sum(stat_yellow_card)+sum(stat_red_card) from stats 
+    where stat_match = matches.match_id) >= ?) as loquesea",[$team,$team,$n]);
     return $y->co;
 }

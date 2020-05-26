@@ -19,8 +19,7 @@ class MatchController extends Controller
     public function index()
     {
         $matches = Match::where('match_final_res','=',"")->get();
-        
-        
+                
         $leagues = DB::table('leagues')->get();
         
         $mt = collect([]);
@@ -31,118 +30,94 @@ class MatchController extends Controller
                 'country' => $l->league_country, 'img' => $l->league_img, 'matches' => $m]);
             }            
         }
-        //dd($mt);
         return view('pages.home',['league' => $mt]);
     }
 
     public function show($match)
     {
-        //dd($match);
-        $mt = Match::find($match);  
-        //$mt->awayTeam->team_id,$mt->homeTeam->team_id
-        $ht = $mt->homeTeam->team_id;
-        $goals = $this->goalsTable($ht);
-        $bts = $this->bothTeamscore($mt->homeTeam->team_id, $mt->awayTeam->team_id);
-        //var_dump($cards);
-        dd($this->cardsTable('SP1','T225','T226'));  
-
+        $mt = $this->matchContent($match);
         return view('pages.match', compact('mt'));
     }
 
-    private function matchTeams($league,$home)
+    private function matchContent($m)
     {
-        $match_teams = collect([]);
-        for($n = 1; $n < 5; $n++){
-            $h = $this->goalTable($league,$home,$n);
-            Arr::add($match_teams, 'h_over_'.$n, $h);
+        $mt = Match::find($m);
+        $bts = $this->bothTeamscore($mt->homeTeam->team_id, $mt->awayTeam->team_id);  
+        $corner = $this->cornersTable($mt->league->league_id,$mt->homeTeam->team_id,$mt->awayTeam->team_id);
+        $card = $this->cardsTable($mt->league->league_id,$mt->homeTeam->team_id,$mt->awayTeam->team_id);
+        $goals = $this->goalTable($mt->homeTeam->team_id,$mt->awayTeam->team_id);
+        $avg = $this->avgTable($mt->homeTeam->team_id,$mt->awayTeam->team_id);
+        $overs = $this->overgoalsTable($mt->homeTeam->team_id,$mt->awayTeam->team_id);
+        Arr::add($mt, 'corners', $corner);
+        Arr::add($mt, 'cards', $card);
+        Arr::add($mt, 'bts', $bts);
+        Arr::add($mt, 'goals', $goals);
+        Arr::add($mt, 'avg', $avg);
+        Arr::add($mt, 'overs', $overs);
+        
+        return $mt;
+    }
+
+    private function overgoalsTable($home,$away)
+    {
+        $ht_matches = Match::where('match_ht','=', $home)->where('match_final_res','!=','')->count();
+        $at_matches = Match::where('match_at','=', $away)->where('match_final_res','!=','')->count();
+        $overs = collect([]);
+        for($n=2;$n<=3;$n++){
+            $db_over = DB::table('matches')->where(function($o) use ($home,$away) {
+                $o->where('match_ht',$home)
+                    ->orWhere('match_at',$away);
+            })->whereRaw("(match_goals_home+match_goals_away) >= ".$n)->where('match_final_res','!=','')->count();
+            $over = round(($db_over*100)/($ht_matches+$at_matches));
+            $overs->push(['name'.$n => $over]);
+        }
+        return $overs;       
+    }
+
+    private function goalTable($home,$away)
+    {
+        $ht_matches = Match::where('match_ht','=', $home)->where('match_final_res','!=','')->count();
+        $at_matches = Match::where('match_at','=', $away)->where('match_final_res','!=','')->count();
+
+        $goals = collect([]);
+        $m = 0.5;
+        for($n = 1; $n <= 4; $n++){
+            $db_home = DB::table('matches')->where('match_ht',$home)
+                ->whereRaw("(match_goals_home+match_goals_away) >= ".$n)
+                ->where('match_final_res','!=','')->count();
+            $db_away = DB::table('matches')->where('match_at',$away)
+                ->whereRaw("(match_goals_home+match_goals_away) >= ".$n)
+                ->where('match_final_res','!=','')->count();
             
+            $ho_goals = round(($db_home*100)/$ht_matches);
+            $aw_goals = round(($db_away*100)/$at_matches);
+
+            $goals->push(['name' => 'Over '.$m, 'home' => $ho_goals, 'away' => $aw_goals]);
+            $m++;
         }
-        //dd($match_teams);
-        return $match_teams;
+        return $goals;        
     }
 
-    private function goalTable($league,$team,$n)
-    {
-        $goal = DB::table('matches')->where(function($t) use ($team){
-            $t->where('match_ht',$team)
-            ->orWhere('match_at',$team);
-        })->whereRaw("(match_goals_home+match_goals_away) >= ".$n)->count();
-
-        return ['goal'.$n => round(($goal*100)/totalMatches($league,$team))];        
-    }
-
-
-    private function goalsTable($team)
+    private function avgTable($home,$away)
     {   
-        /**
-         * @var int
-         */
-        $h = 0;
-        $a = 0;
-        $home_goals = Match::where('match_ht','=',$team)->where('match_final_res','!=','')->get();
-        
-        foreach($home_goals as $hg){
-            $h += $hg->match_goals_home;
-        }
+        $matches = DB::table('matches')->where(function($m) use ($home,$away){
+            $m->where('match_ht',$home)
+                ->orWhere('match_at',$away);
+        })->where('match_final_res','!=','')->count();
+        $hTeam_home_goals = Match::where('match_ht',$home)->where('match_final_res','!=','')->sum('match_goals_home');
+        $hTeam_away_goals = Match::where('match_at',$home)->where('match_final_res','!=','')->sum('match_goals_away');
+        $aTeam_home_goals = Match::where('match_ht',$away)->where('match_final_res','!=','')->sum('match_goals_home');
+        $aTeam_away_goals = Match::where('match_at',$away)->where('match_final_res','!=','')->sum('match_goals_away');
 
-        $away_goals = Match::where('match_at','=',$team)->where('match_final_res','!=','')->get();
+        $avg = round(($hTeam_home_goals+$hTeam_away_goals+$aTeam_home_goals+$aTeam_away_goals)/$matches,2);
         
-        foreach($away_goals as $ag){
-            $a += $ag->match_goals_away;
-        }
-        $total = $a + $h;
-        
-        /**
-         * @var 
-         */
-        $nlocalmatch = $home_goals->count();
-        $nawaymatch = $away_goals->count();
-        
-        /**
-         * Variables promedio
-         * @var float
-         */
-        $avergo_local = round($h/$nlocalmatch,2);
-        $avergo_away = round($a/$nawaymatch,2);
-        $avergo_total = round($total/($nlocalmatch + $nawaymatch),2);
-        
-        /**
-         * Variables porcentajes
-         * @var float
-         */
-        // $home_per = ($h *100)/$total;
-        // $away_per = ($h *100)/$total;
-
-        $goals = Arr::add([], 'home', $h);
-        $goals = Arr::add($goals, 'away', $a);
-        $goals = Arr::add($goals, 'total', $total);
-        $goals = Arr::add($goals, 'avergo_local',$avergo_local);
-        $goals = Arr::add($goals, 'avergo_away',$avergo_away);
-        $goals = Arr::add($goals, 'avergo_total',$avergo_total);
-
-        return $goals;
+        return $avg;
     }
 
     private function bothTeamscore($home, $away)
     {
-        //dd($home);
-        $bts = Match::where(function($query1) use ($home,$away){
-            $query1->whereIn('match_ht',[$home,$away])
-                    ->orWhere(function($query2) use ($home,$away){
-                        $query2->whereIn('match_at',[$home,$away]);
-                    });
-
-        })->where(function($query3){
-            $query3->where('match_goals_home','>',0)
-                    ->where('match_goals_away','>',0);
-        })->count();
-
-        $bts_home = Match::where('match_ht','=', $home)->where('match_goals_home','>',0)->where('match_goals_away','>',0)->count();
-        $bts_away = Match::where('match_at','=', $away)->where('match_goals_home','>',0)->where('match_goals_away','>',0)->count();
-
         $bts_ht_matches = Match::where('match_ht','=', $home)->count();
         $bts_at_matches = Match::where('match_at','=', $away)->count();
-
         $bts_matches = Match::where(function($query) use ($home,$away){
             $query->whereIn('match_ht',[$home,$away])
                     ->orWhere(function($query2) use ($home,$away){
@@ -150,51 +125,60 @@ class MatchController extends Controller
                     });
         })->count();
 
-        $bts_htper = round(($bts_home*100)/$bts_ht_matches, 2);
-        $bts_atper = round(($bts_away*100)/$bts_at_matches, 2);
-        $bts_per = round(($bts*100)/$bts_matches, 2);
+        $bts = Match::where(function($query1) use ($home,$away){
+            $query1->whereIn('match_ht',[$home,$away])
+                    ->orWhere(function($query2) use ($home,$away){
+                        $query2->whereIn('match_at',[$home,$away]);
+                    });
+        })->where(function($query3){
+            $query3->where('match_goals_home','>',0)
+                    ->where('match_goals_away','>',0);
+        })->count();
 
-        $both = Arr::add([], 'bts_per', $bts_per);
-        $both = Arr::add($both, 'bts_htper', $bts_htper);
-        $both = Arr::add($both, 'bts_atper', $bts_atper);
-        $both = Arr::add($both, 'bts_home', $bts_home);
-        $both = Arr::add($both, 'bts_away', $bts_away);
-        $both = Arr::add($both, 'bts', $bts);
+        $bts_home_yes = Match::where('match_ht','=', $home)->where('match_goals_home','>',0)->where('match_goals_away','>',0)->count();
+        $bts_away_yes = Match::where('match_at','=', $away)->where('match_goals_home','>',0)->where('match_goals_away','>',0)->count();
+        $bts_home_no = Match::where('match_ht','=', $home)->where(function($h){
+            $h->where('match_goals_home',0)
+                ->orWhere('match_goals_away',0);
+        })->count();
+        $bts_away_no = Match::where('match_at','=', $away)->where(function($a){
+            $a->where('match_goals_home',0)
+                ->orWhere('match_goals_away',0);
+        })->count();
 
-        //dd($both);
+
+        $home_yes = round(($bts_home_yes*100)/$bts_ht_matches);
+        $away_yes = round(($bts_away_yes*100)/$bts_at_matches);
+        $home_no = round(($bts_home_no*100)/$bts_ht_matches);
+        $away_no = round(($bts_away_no*100)/$bts_at_matches);
+        $bts_per = round(($bts*100)/$bts_matches);
+
+        $both = collect([]);
+        Arr::add($both, 'bts_per', $bts_per);
+        Arr::add($both, 'home_yes', $home_yes);
+        Arr::add($both, 'home_no', $home_no);
+        Arr::add($both, 'away_yes', $away_yes);
+        Arr::add($both, 'away_no', $away_no);
+
         return $both;
     }
 
     private function cardsTable($league,$home,$away)
     {
-        /**
-         * @var int 
-         */
-        // $total_matches = (int)Stat::where('stat_team','=',$teams)->count();
-        // $yellow_card = (int)Stat::where('stat_team','=',$teams)->sum('stat_yellow_card');
-        // $red_card = (int)Stat::where('stat_team','=',$teams)->sum('stat_red_card');
-
-        /**
-         * @var float
-         */
-        // $avercar_yell = round($yellow_card/$total_matches,2);
-        // $avercar_red = round($red_card/$total_matches,2);
-
         $mt_home = totalMatches($league,$home);
         $mt_away = totalMatches($league,$away);
         
         $cards = collect([]);
+        $n = 1.5;
         for($m=2; $m <= 8; $m++) {
             $car_home = cardsTeam($home,$m);
             $car_away = cardsTeam($away,$m);
             $per_card_home = round(($car_home*100)/$mt_home);
             $per_card_away = round(($car_away*100)/$mt_away);
-            $avg_card = (($car_home+$car_away)*100)/($mt_home+$mt_away);
-
-            $cards->push(['home'.$m => $per_card_home, 'away'.$m => $per_card_away, 'avg'.$m => $avg_card]);
+            $avg_card = round((($car_home+$car_away)*100)/($mt_home+$mt_away));
+            $cards->push(['name' => 'Over '.$n, 'home' => $per_card_home, 'away' => $per_card_away, 'avg' => $avg_card]);
+            $n++;
         }
-
-
         return $cards;
     }
 
@@ -203,17 +187,19 @@ class MatchController extends Controller
         /**
          * @var int 
          */
-        $matches = totalMatches($league,$home);
+        $mt_home = totalMatches($league,$home);
+        $mt_away = totalMatches($league,$away);
 
         $corners = collect([]);
+        $n = 7.5;
         for($m=8; $m <= 14; $m++) {
             $cor_home = cornersTeam($home,$m);
             $cor_away = cornersTeam($away,$m);
-            $per_corner_home = round(($cor_home*100)/$matches);
-            $per_corner_away = round(($cor_away*100)/$matches);
-            $avg_corner = (($cor_home+$cor_away)*100)/($matches*2);
-
-            $corners->push(['home'.$m => $per_corner_home, 'away'.$m => $per_corner_away, 'avg'.$m => $avg_corner]);
+            $per_corner_home = round(($cor_home*100)/$mt_home);
+            $per_corner_away = round(($cor_away*100)/$mt_away);
+            $avg_corner = round((($cor_home+$cor_away)*100)/($mt_home+$mt_away));
+            $corners->push(['name' => 'Over '.$n, 'home' => $per_corner_home, 'away' => $per_corner_away, 'avg' => $avg_corner]);
+            $n++;
         }
         
         // table('stats')->join('matches', 'matches.match_id','=','stats.stat_match')->where(function($t) use ($team){
@@ -222,7 +208,6 @@ class MatchController extends Controller
         // })->fromSub(function($c){
         //      $c->where('stat_match','matches.match_id')->sum('stat_corners');
         // }, 'co')->where('co','>',7.5)->count();
-        return $corner;
+        return $corners;
     }
-
 }

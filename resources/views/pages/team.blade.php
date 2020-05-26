@@ -57,21 +57,21 @@
                     <tbody>
                         <tr>
                             <td>Overall</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$team->goalavght['gf_total']}}</td>
+                            <td>{{$team->goalavght['ga_total']}}</td>
+                            <td>{{$team->goalavght['gf_total']+$team->goalavght['ga_total']}}</td>
                         </tr>
                         <tr>
                             <td>Home</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$team->goalavght['gf_home']}}</td>
+                            <td>{{$team->goalavght['ga_home']}}</td>
+                            <td>{{$team->goalavght['gf_home']+$team->goalavght['ga_home']}}</td>
                         </tr>
                         <tr>
                             <td>Away</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$team->goalavght['gf_away']}}</td>
+                            <td>{{$team->goalavght['ga_away']}}</td>
+                            <td>{{$team->goalavght['gf_away']+$team->goalavght['ga_away']}}</td>
                         </tr>
                     </tbody>
                 </table>            
@@ -116,7 +116,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>-</td>
+                                <td>{{$team->goalavght['gf_total']+$team->goalavght['ga_total']}}</td>
                                 <td>-</td>
                             </tr>
                         </tbody>
@@ -194,21 +194,21 @@
                     <tbody>
                         <tr>
                             <td>Overall</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$team->goalavgft['gf_total']}}</td>
+                            <td>{{$team->goalavgft['ga_total']}}</td>
+                            <td>{{$team->goalavgft['gf_total']+$team->goalavgft['ga_total']}}</td>
                         </tr>
                         <tr>
                             <td>Home</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$team->goalavgft['gf_home']}}</td>
+                            <td>{{$team->goalavgft['ga_home']}}</td>
+                            <td>{{$team->goalavgft['gf_home']+$team->goalavgft['ga_home']}}</td>
                         </tr>
                         <tr>
                             <td>Away</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$team->goalavgft['gf_away']}}</td>
+                            <td>{{$team->goalavgft['ga_away']}}</td>
+                            <td>{{$team->goalavgft['gf_away']+$team->goalavgft['ga_away']}}</td>
                         </tr>
                     </tbody>
                 </table>            
@@ -251,7 +251,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>-</td>
+                                <td>{{$team->goalavgft['gf_total']+$team->goalavgft['ga_total']}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -289,10 +289,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($team['over_corner'] as $corner)
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$corner['name']}}</td>
+                            <td>{{$corner['over']}}%</td>
                         </tr>
+                    @endforeach    
                     </tbody>
                 </table>
             </div>
@@ -304,10 +306,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($team['corner_for'] as $cornerfor)
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$cornerfor['name']}}</td>
+                            <td>{{$cornerfor['over']}}%</td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>            
             </div>
@@ -319,10 +323,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($team['corner_against'] as $cornerag)
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$cornerag['name']}}</td>
+                            <td>{{$cornerag['over']}}%</td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>            
             </div>
@@ -339,10 +345,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($team['over_card'] as $card)
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$card['name']}}</td>
+                            <td>{{$card['over']}}%</td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -354,10 +362,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($team['card_for'] as $cardfor)
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$cardfor['name']}}</td>
+                            <td>{{$cardfor['over']}}%</td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>            
             </div>
@@ -369,10 +379,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($team['card_against'] as $cardaga)
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{$cardaga['name']}}</td>
+                            <td>{{$cardaga['over']}}%</td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>            
             </div>

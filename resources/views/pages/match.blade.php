@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-sm">
                     <img src="/img/shields/{{$mt->homeTeam->team_img}}.png" alt="{{$mt->homeTeam->team_img}}" width="100">
-                    <p class="mb-1"><a href="{{ route('pages.team', ['league_tag' => $mt->league->league_tag, 'team_tag' => $mt->homeTeam->team_tag]) }}">{{$mt->homeTeam->team_name}}</a></p>               
+                    <h2 class="mb-1"><a href="{{ route('pages.team', ['league_tag' => $mt->league->league_tag, 'team_tag' => $mt->homeTeam->team_tag]) }}">{{$mt->homeTeam->team_name}}</a></h2>               
                 </div>
                 <div class="col-sm">
                     <p class="mb-1">
@@ -24,52 +24,56 @@
                 </div>
                 <div class="col-sm">
                     <img src="/img/shields/{{$mt->awayTeam->team_img}}.png" alt="{{$mt->homeTeam->team_img}}" width="100">
-                    <p class="mb-1"><a href="{{ route('pages.team', ['league_tag' => $mt->league->league_tag, 'team_tag' => $mt->awayTeam->team_tag]) }}">{{$mt->awayTeam->team_name}}</a></p>
+                    <h2 class="mb-1"><a href="{{ route('pages.team', ['league_tag' => $mt->league->league_tag, 'team_tag' => $mt->awayTeam->team_tag]) }}">{{$mt->awayTeam->team_name}}</a></h2>
                 </div>              
             </div>         
         </div>
         <hr>
-        <div class="goal-market">
-            <h4>Over goals match</h4>
-            <div class="goal-table">
-                <table class="table table-sm">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th></th>
-                            <th>{{$mt->homeTeam->team_name}}</th>
-                            <th>{{$mt->awayTeam->team_name}}</th>
-                            <th>Both teams</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Over 0.5</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Over 1.5</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Over 2.5</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Over 3.5</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <h4>Stats both teams</h4>
+        <div class="row">
+            <div class="col">
+                <p>AVG Goals</p>
+                <p>{{$mt->avg}}</p>
             </div>
+            <div class="col">
+                <p>BTS</p>
+                <p>{{$mt->bts['bts_per']}}%</p>
+            </div>
+            <div class="col">
+                <p>Over 1.5</p>
+                <p>{{$mt->overs[0]['name2']}}%</p>
+            </div>
+            <div class="col">
+                <p>Over 2.5</p>
+                <p>{{$mt->overs[1]['name3']}}%</p>
+            </div>
+        </div>
+        <p>Calculated from {{$mt->homeTeam->team_name}} Home stats and {{$mt->awayTeam->team_name}} Away stats</p>
+        <div class="goal-market">
             <div class="row">
+                <div class="col">
+                    <h4>Over goals match</h4>
+                    <div class="goal-table">
+                        <table class="table table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>{{$mt->homeTeam->team_name}}</th>
+                                    <th>{{$mt->awayTeam->team_name}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($mt->goals as $goal)
+                                <tr>
+                                    <td>{{$goal['name']}}</td>
+                                    <td>{{$goal['home']}}%</td>
+                                    <td>{{$goal['away']}}%</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>                
+                </div>
                 <div class="col">
                     <h4>Both teams to score</h4>
                     <div class="bts-table">
@@ -84,43 +88,17 @@
                             <tbody>
                                 <tr>
                                     <td>Yes</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td>{{$mt->bts['home_yes']}}%</td>
+                                    <td>{{$mt->bts['away_yes']}}%</td>
                                 </tr>
                                 <tr>
                                     <td>No</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td>{{$mt->bts['home_no']}}%</td>
+                                    <td>{{$mt->bts['away_no']}}%</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>               
-                </div>
-                <div class="col">
-                <h4>Clean sheet</h4>
-                <div class="cs-table">
-                    <table class="table table-sm">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th></th>
-                                <th>{{$mt->homeTeam->team_name}}</th>
-                                <th>{{$mt->awayTeam->team_name}}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Yes</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>No</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>                
                 </div>
             </div>
         </div>
@@ -140,48 +118,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($mt->corners as $corner)
                                 <tr>
-                                    <td>Over 7.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td>{{$corner['name']}}</td>
+                                    <td>{{$corner['home']}}%</td>
+                                    <td>{{$corner['away']}}%</td>
+                                    <td>{{$corner['avg']}}%</td>
                                 </tr>
-                                <tr>
-                                    <td>Over 8.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 9.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 10.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 11.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 12.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 13.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -201,48 +145,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach($mt->cards as $card)
                                 <tr>
-                                    <td>Over 1.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td>{{$card['name']}}</td>
+                                    <td>{{$card['home']}}%</td>
+                                    <td>{{$card['away']}}%</td>
+                                    <td>{{$card['avg']}}%</td>
                                 </tr>
-                                <tr>
-                                    <td>Over 2.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 3.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 4.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 5.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 6.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>Over 7.5</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
