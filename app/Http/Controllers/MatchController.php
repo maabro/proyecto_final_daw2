@@ -32,7 +32,11 @@ class MatchController extends Controller
         }
         return view('pages.home',['league' => $mt]);
     }
-
+    /**
+     * 
+     * 
+     * 
+     */
     public function show($match)
     {
         $mt = $this->matchContent($match);

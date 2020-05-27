@@ -6,7 +6,7 @@
     <title>@yield('title') | Soccermarkt · Football stats</title>
     <link rel="icon" type="image/svg" href="{{ asset('favicon.svg') }}" sizes="32x32">
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/02dda62dae.js" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,5 +19,10 @@
         @show
     </section>
     <x-footer></x-footer>
+    <script>
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 </html>

@@ -21,7 +21,7 @@ class LeagueController extends Controller
 
         $s = collect([]);
         foreach($leagues as $league){
-            $r = League::leaguesResults($league->league_id);
+            $r = $this->leaguesResults($league->league_id);
             $b = $this->leaguesBts($league->league_id);
             $g1 = $this->leaguesGoals($league->league_id,1);
             $g2 = $this->leaguesGoals($league->league_id,2);
@@ -94,6 +94,25 @@ class LeagueController extends Controller
         $teams = $teams->sortByDesc('point');
         //dd();
         return view('pages.league', ['lg' => $lg, 'teams' => $teams, 'count' => $count]);
+    }
+    /**
+    * Muestra porcentajes de victoras locales, visitantes y empates de una liga
+    * 
+    * @param String $league
+    * @return Array
+    */
+    private function leaguesResults($league)
+    {
+        $matches = League::find($league)->matches->count();
+        $win_local = League::find($league)->matches->where('match_final_res','=','H')->count();
+        $win_away = League::find($league)->matches->where('match_final_res','=','A')->count();
+        $draw_match = League::find($league)->matches->where('match_final_res','=','D')->count();
+
+        $per_homewins = round(($win_local*100)/$matches,0);
+        $per_awaywins = round(($win_away*100)/$matches,0);
+        $per_draws = round(($draw_match*100)/$matches,0);
+
+        return ['home' => $per_homewins,'away' => $per_awaywins,'draw' => $per_draws];
     }
     /**
      * Calcula los puntos de los equipos en la clasificación

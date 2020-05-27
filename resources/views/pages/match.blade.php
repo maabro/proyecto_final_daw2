@@ -53,21 +53,21 @@
             <div class="row">
                 <div class="col">
                     <h4>Over goals match</h4>
-                    <div class="goal-table">
-                        <table class="table table-sm">
+                    <div class="goal-table p-2">
+                        <table class="table table-sm table-striped">
                             <thead class="thead-dark">
                                 <tr>
                                     <th></th>
-                                    <th>{{$mt->homeTeam->team_name}}</th>
-                                    <th>{{$mt->awayTeam->team_name}}</th>
+                                    <th class="text-center">{{$mt->homeTeam->team_name}}</th>
+                                    <th class="text-center">{{$mt->awayTeam->team_name}}</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($mt->goals as $goal)
                                 <tr>
                                     <td>{{$goal['name']}}</td>
-                                    <td>{{$goal['home']}}%</td>
-                                    <td>{{$goal['away']}}%</td>
+                                    <td class="text-center">{{$goal['home']}}%</td>
+                                    <td class="text-center">{{$goal['away']}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -76,25 +76,25 @@
                 </div>
                 <div class="col">
                     <h4>Both teams to score</h4>
-                    <div class="bts-table">
-                        <table class="table table-sm">
+                    <div class="bts-table p-2">
+                        <table class="table table-sm table-striped">
                             <thead class="thead-dark">
                                 <tr>
                                     <th></th>
-                                    <th>{{$mt->homeTeam->team_name}}</th>
-                                    <th>{{$mt->awayTeam->team_name}}</th>
+                                    <th class="text-center">{{$mt->homeTeam->team_name}}</th>
+                                    <th class="text-center">{{$mt->awayTeam->team_name}}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Yes</td>
-                                    <td>{{$mt->bts['home_yes']}}%</td>
-                                    <td>{{$mt->bts['away_yes']}}%</td>
+                                    <td class="text-center">{{$mt->bts['home_yes']}}%</td>
+                                    <td class="text-center">{{$mt->bts['away_yes']}}%</td>
                                 </tr>
                                 <tr>
                                     <td>No</td>
-                                    <td>{{$mt->bts['home_no']}}%</td>
-                                    <td>{{$mt->bts['away_no']}}%</td>
+                                    <td class="text-center">{{$mt->bts['home_no']}}%</td>
+                                    <td class="text-center">{{$mt->bts['away_no']}}%</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -105,25 +105,25 @@
         <hr>
         <div class="row">
             <div class="col">
-                <div class="corner-market">
+                <div class="corner-market p-2">
                     <h4>Over corners during the match</h4>
                     <div class="corner-table">
-                        <table class="table table-sm">
+                        <table class="table table-sm table-striped">
                             <thead  class="thead-dark">
                                 <tr>
                                     <th></th>
-                                    <th>{{$mt->homeTeam->team_name}}</th>
-                                    <th>{{$mt->awayTeam->team_name}}</th>
-                                    <th>Average</th>
+                                    <th class="text-center">{{$mt->homeTeam->team_name}}</th>
+                                    <th class="text-center">{{$mt->awayTeam->team_name}}</th>
+                                    <th class="text-center">Average</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($mt->corners as $corner)
                                 <tr>
                                     <td>{{$corner['name']}}</td>
-                                    <td>{{$corner['home']}}%</td>
-                                    <td>{{$corner['away']}}%</td>
-                                    <td>{{$corner['avg']}}%</td>
+                                    <td class="text-center">{{$corner['home']}}%</td>
+                                    <td class="text-center">{{$corner['away']}}%</td>
+                                    <td class="text-center">{{$corner['avg']}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -132,25 +132,25 @@
                 </div>
             </div>
             <div class="col">
-                <div class="corner-market">
+                <div class="corner-market p-2">
                     <h4>Over cards during the match</h4>
                     <div class="card-table">
-                        <table class="table table-sm">
+                        <table class="table table-sm table-striped">
                             <thead  class="thead-dark">
                                 <tr>
                                     <th></th>
-                                    <th>{{$mt->homeTeam->team_name}}</th>
-                                    <th>{{$mt->awayTeam->team_name}}</th>
-                                    <th>Average</th>
+                                    <th class="text-center">{{$mt->homeTeam->team_name}}</th>
+                                    <th class="text-center">{{$mt->awayTeam->team_name}}</th>
+                                    <th class="text-center">Average</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($mt->cards as $card)
                                 <tr>
                                     <td>{{$card['name']}}</td>
-                                    <td>{{$card['home']}}%</td>
-                                    <td>{{$card['away']}}%</td>
-                                    <td>{{$card['avg']}}%</td>
+                                    <td class="text-center">{{$card['home']}}%</td>
+                                    <td class="text-center">{{$card['away']}}%</td>
+                                    <td class="text-center">{{$card['avg']}}%</td>
                                 </tr>
                             @endforeach
                             </tbody>
