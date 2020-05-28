@@ -12,7 +12,7 @@ use Illuminate\Support\Arr;
 class MatchController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra la lista de ligas en la vista.
      *
      * @return \Illuminate\Http\Response
      */
@@ -33,16 +33,22 @@ class MatchController extends Controller
         return view('pages.home',['league' => $mt]);
     }
     /**
+     * Muestra un partido en la vista
      * 
-     * 
-     * 
+     * @param String $match variable con la id de partido
+     * @return \Illuminate\Http\Response
      */
     public function show($match)
     {
         $mt = $this->matchContent($match);
         return view('pages.match', compact('mt'));
     }
-
+    /**
+     * Llama al resto de funciones que añaden las estadisticas al partido
+     * 
+     * @param String $m variable con la id del partido
+     * @return Array $mt devuele el objeto partido
+     */
     private function matchContent($m)
     {
         $mt = Match::find($m);
@@ -61,7 +67,13 @@ class MatchController extends Controller
         
         return $mt;
     }
-
+    /**
+     * Calcula los parametros de la tablas de media de over de goles
+     * 
+     * @param String $home variable con la id del equipo local
+     * @param String $away variable con la id del equipo visitante
+     * @return Array $overs resultado de los goles
+     */
     private function overgoalsTable($home,$away)
     {
         $ht_matches = Match::where('match_ht','=', $home)->where('match_final_res','!=','')->count();
@@ -77,7 +89,13 @@ class MatchController extends Controller
         }
         return $overs;       
     }
-
+    /**
+     * Calcula los over de goles de la tabla de "Over goals match"
+     * 
+     * @param String $home variable con la id del equipo local
+     * @param String $away variable con la id del equipo visitante
+     * @param Array $goals
+     */
     private function goalTable($home,$away)
     {
         $ht_matches = Match::where('match_ht','=', $home)->where('match_final_res','!=','')->count();
@@ -101,7 +119,13 @@ class MatchController extends Controller
         }
         return $goals;        
     }
-
+    /**
+     * Calcula la media de goles por partido
+     * 
+     * @param String $home variable con la id del equipo local
+     * @param String $away variable con la id del equipo visitante
+     * @return Float $avg media de goles de ambos equipos
+     */
     private function avgTable($home,$away)
     {   
         $matches = DB::table('matches')->where(function($m) use ($home,$away){
@@ -117,7 +141,13 @@ class MatchController extends Controller
         
         return $avg;
     }
-
+    /**
+     * Calcula los porcentajes de ambos equipos marcan, tanto del local como del visitante
+     * 
+     * @param String $home variable con la id del equipo local
+     * @param String $away variable con la id del equipo visitante
+     * @return Array $both array con los datos de ambos marcan de cada equipo y de los dos juntos
+     */
     private function bothTeamscore($home, $away)
     {
         $bts_ht_matches = Match::where('match_ht','=', $home)->count();
@@ -166,7 +196,14 @@ class MatchController extends Controller
 
         return $both;
     }
-
+    /**
+     * Calcula la tabla de tarjetas de ambos equipos y la media.
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $home variable con la id del equipo local
+     * @param String $away variable con la id del equipo visitante
+     * @return Array $cards devuelve el nombre, el numero de tarjetas del local, del visitante y las media
+     */
     private function cardsTable($league,$home,$away)
     {
         $mt_home = totalMatches($league,$home);
@@ -185,7 +222,14 @@ class MatchController extends Controller
         }
         return $cards;
     }
-
+    /**
+     * Calcula la tabla de corners de ambos equipos y la media
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $home variable con la id del equipo local
+     * @param String $away variable con la id del equipo visitante
+     * @return Array $corners devuelve el nombre, los corners de local, de visitante y la media
+     */
     private function cornersTable($league,$home,$away)
     {
         /**
@@ -205,13 +249,6 @@ class MatchController extends Controller
             $corners->push(['name' => 'Over '.$n, 'home' => $per_corner_home, 'away' => $per_corner_away, 'avg' => $avg_corner]);
             $n++;
         }
-        
-        // table('stats')->join('matches', 'matches.match_id','=','stats.stat_match')->where(function($t) use ($team){
-        //     $t->where('matches.match_ht',$team)
-        //         ->orWhere('matches.match_at',$team);
-        // })->fromSub(function($c){
-        //      $c->where('stat_match','matches.match_id')->sum('stat_corners');
-        // }, 'co')->where('co','>',7.5)->count();
         return $corners;
     }
 }

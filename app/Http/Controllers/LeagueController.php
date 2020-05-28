@@ -47,7 +47,9 @@ class LeagueController extends Controller
 
         return $per_bts;
     }
-
+    /**
+     * 
+     */
     private function leaguesGoals($league,$n)
     {
         $matches = League::find($league)->matches->count();
@@ -96,8 +98,8 @@ class LeagueController extends Controller
         return view('pages.league', ['lg' => $lg, 'teams' => $teams, 'count' => $count]);
     }
     /**
-    * Muestra porcentajes de victoras locales, visitantes y empates de una liga
-    * 
+    * Muestra porcentajes de victoras locales, visitantes y empates de una liga 
+    *
     * @param String $league
     * @return Array
     */
@@ -116,6 +118,7 @@ class LeagueController extends Controller
     }
     /**
      * Calcula los puntos de los equipos en la clasificación
+     * 
      * @param String $team
      * @return Integer $points
      */
@@ -132,7 +135,13 @@ class LeagueController extends Controller
 
         return $points;
     }
-    
+    /**
+     * Calcula los goles que ha marcado un equipo
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $team variable con la id del equipo
+     * @return Integer $goals variable con la suma de goles de un equipo como visitante y local
+     */
     private function teamsGf($league,$team)
     {
         $goals_local = League::find($league)->matches->where('match_ht',$team)->sum('match_goals_home');
@@ -141,7 +150,13 @@ class LeagueController extends Controller
 
         return $goals;
     }
-
+    /**
+     * Calcula los goles que ha recibido un equipo
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $team variable con la id del equipo
+     * @return Integer $goals variable con la suma de goles que ha recibido el equipo
+     */
     private function teamsGa($league,$team)
     {
         $goals_local = League::find($league)->matches->where('match_ht',$team)->sum('match_goals_away');
@@ -150,7 +165,13 @@ class LeagueController extends Controller
 
         return $goals;        
     }
-
+    /**
+     * Calcula los partidos de un equipo que no ha recibido goles
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $team variable con la id del equipo
+     * @return Float $cs variable con el total de partidos con la porteria a cero
+     */
     private function teamsCs($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -161,7 +182,13 @@ class LeagueController extends Controller
         $cs = round((($cs_local+$cs_away)*100)/$matches);
         return $cs;
     }
-
+    /**
+     * Calcula los partidos que el equipo no ha marcado
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $team variable con la id del equipo
+     * @return Float $fts variable con el total de partidos que un equipo no ha marcado
+     */
     private function teamsFts($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -172,7 +199,12 @@ class LeagueController extends Controller
         $fts = round((($fts_local+$fts_away)*100)/$matches);
         return $fts;
     }
-
+    /**
+     * Calcaula las tarjetas amarillas y rojas de un equipo
+     * 
+     * @param String $team variable con la id del equipo
+     * @return Array con la cantidad de tarjetas
+     */
     private function teamsCards($team)
     {
         $matches = DB::table('stats')->where('stat_team',$team)->count();
@@ -182,7 +214,13 @@ class LeagueController extends Controller
         $avg_card_red = round($card_red/$matches,2);
         return ['yellow' => $avg_card_yellow, 'red' => $avg_card_red];
     }
-
+    /**
+     * Calcula el porcentaje de "ambos marcan" de un equipo
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $team variable con la id del equipo
+     * @return Float $per_bts variable con el porcentaje de bts de un equipo
+     */
     private function teamsBts($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -194,7 +232,12 @@ class LeagueController extends Controller
 
         return $per_bts;
     }
-
+    /**
+     * Calcula la media de corners de un equipo
+     * 
+     * @param String $team variable con la id del equipo
+     * @return Float $avg_corners variable devuele la media de corners de un equipo
+     */
     private function teamsCorner($team)
     {
         $matches = DB::table('stats')->where('stat_team',$team)->count();
@@ -202,15 +245,19 @@ class LeagueController extends Controller
         $avg_corners = round($corners/$matches,2);
         return $avg_corners;
     }
-
+    /**
+     * Calcula la media de goles de un equipo
+     * 
+     * @param String $league variable con la id de la liga
+     * @param String $team variable con la id del equipo
+     * @return Float $avg devuelve la media de goles de un equipo
+     */
     private function teamsAvg($league,$team)
     {
         $matches = totalMatches($league,$team);
         $home = $this->teamsGf($league,$team);
         $away = $this->teamsGa($league,$team);
         $avg = round(($home+$away)/$matches,2);
-        //dd($goals);
         return $avg;
     }
-
 }

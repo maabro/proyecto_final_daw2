@@ -17,12 +17,7 @@ class TeamController extends Controller
      */
     public function show($league,$team)
     {
-        //dd($league);
         $team = Team::where('team_tag','=',$team)->first();
-        //$league =  Team::where('team_tag','=',$team)->leagues;
-        //dd($team->league);
-        //$teams = League::find($lg->league_id)->teams;     
-        //$sc = $this->teamsResults($lg->league_id,$team->team_id);
         $home_ft = $this->teamResHomeFt($team->team_id);
         $away_ft = $this->teamResAwayFt($team->team_id);
         $home_ht = $this->teamResHomeHt($team->team_id);
@@ -59,13 +54,16 @@ class TeamController extends Controller
         Arr::add($team, 'card_against', $card_aga);
         Arr::add($team, 'goalavght', $goalavght);
         Arr::add($team, 'goalavgft', $goalavgft);
-        //dd($team);
         //dd($this->teamCardAgainst($team->league->league_id,$team->team_id));
              
         return view('pages.team', compact('team'));
     }
-
-
+    /**
+     * Calcula las victorias, empates y derrotas de un equipo cuando juega como local
+     * 
+     * @param String $team variable con el id del equipo
+     * @return Array devuelve el numero de victorias, empates y derrotas.
+     */
     private function teamResHomeFt($team)
     {
         $wins = DB::table('matches')->where('match_ht',$team)->where('match_final_res','H')->count();
@@ -73,7 +71,12 @@ class TeamController extends Controller
         $loses = DB::table('matches')->where('match_ht',$team)->where('match_final_res','A')->count();
         return ['wins'=>$wins,'draws'=>$draws,'loses'=>$loses];
     }
-
+    /**
+     * Calcula las victorias, empates y derrotas de un equipo cuando juega de visitante.
+     * 
+     * @param String $team variable con el id del equipo.
+     * @return Array devuelve el numero de victorias, empates y derrotas.
+     */
     private function teamResAwayFt($team)
     {
         $wins = DB::table('matches')->where('match_at',$team)->where('match_final_res','A')->count();
@@ -81,7 +84,12 @@ class TeamController extends Controller
         $loses = DB::table('matches')->where('match_at',$team)->where('match_final_res','H')->count();
         return ['wins'=>$wins,'draws'=>$draws,'loses'=>$loses];
     }
-
+    /**
+     * Calcula las victorias, empates y derrotas de un equipo cuando juega de local en la media parte del partido.
+     * 
+     * @param String $team variable con el id del equipo.
+     * @return Array devuelve el numero de victorias, empates y derrotas.
+     */
     private function teamResHomeHt($team)
     {
         $wins = DB::table('matches')->where('match_ht',$team)->where('match_ht_res','H')->count();
@@ -89,7 +97,12 @@ class TeamController extends Controller
         $loses = DB::table('matches')->where('match_ht',$team)->where('match_ht_res','A')->count();
         return ['wins'=>$wins,'draws'=>$draws,'loses'=>$loses];
     }
-
+    /**
+     * Calcula las victorias, empates y derrotas de un equipo cuando juega de visitante en la media parte del partido.
+     * 
+     * @param String $team variable con el id del equipo.
+     * @return Array devuelve el numero de victorias, empates y derrotas.
+     */
     private function teamResAwayHt($team)
     {
         $wins = DB::table('matches')->where('match_at',$team)->where('match_ht_res','A')->count();
@@ -97,7 +110,9 @@ class TeamController extends Controller
         $loses = DB::table('matches')->where('match_at',$team)->where('match_ht_res','H')->count();
         return ['wins'=>$wins,'draws'=>$draws,'loses'=>$loses];
     }
-
+    /**
+     * Calcula el porcentaje de goles de un equipo en ambas partes del partido.
+     */
     private function teamGoalsHt($league,$team,$n)
     {
         $ht = DB::table('matches')->where(function($t) use ($team){
@@ -122,7 +137,9 @@ class TeamController extends Controller
 
         return ['ht' => round(($ht*100)/totalMatches($league,$team))];
     }
-
+    /**
+     * Calcula el goal average 
+     */
     private function teamGoalaverageFt($league,$team)
     {
         $ht_matches = DB::table('matches')->where('match_ht','=', $team)->count();

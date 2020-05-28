@@ -1,7 +1,7 @@
 <header class="bg-dark mb-3">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Soccermarkt</a>
+            <a class="navbar-brand" href="{{route('pages.home')}}">Soccermarkt</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

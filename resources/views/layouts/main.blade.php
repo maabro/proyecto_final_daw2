@@ -22,6 +22,10 @@
     <script>
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
+        $('#scroll-top').click(function(){  
+		    $('html, body').animate({scrollTop:0}, 'slow');
+		    return false;
+	    });
         });
     </script>
 </body>

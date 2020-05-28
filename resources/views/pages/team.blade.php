@@ -8,8 +8,8 @@
         <div class="col-xl-12">
             <div class="team-header mb-4">
                 <img class="league-img" src="/img/shields/{{$team->team_img}}.png" alt="{{$team->team_img}}" width="90">
-                <h1 class="league-name">{{$team->team_name}}</h1>
-                <p class="league-country"><img src="/img/flags/{{$team->league->league_country_flag}}.png" alt="{{$team->league->league_country_flag}}" width="25"> {{$team->league->league_country}}</p> 
+                <h1 class="team-name">{{$team->team_name}}</h1>
+                <p class="team-country"><img src="/img/flags/{{$team->league->league_country_flag}}.png" alt="{{$team->league->league_country_flag}}" width="25"> {{$team->league->league_country}}</p> 
             </div>
         </div>
     </div>

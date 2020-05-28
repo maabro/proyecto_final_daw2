@@ -6,11 +6,12 @@
     <section class="match-content shadow-sm">
         <div class="match-header">
             <div class="row">
-                <div class="col-sm">
-                    <img src="/img/shields/{{$mt->homeTeam->team_img}}.png" alt="{{$mt->homeTeam->team_img}}" width="100">
+                <div class="col-xl-4 col-sm-4 mt-3">
+                    <img src="/img/shields/{{$mt->homeTeam->team_img}}.png" alt="{{$mt->homeTeam->team_img}}" width="20%">
                     <h2 class="mb-1"><a href="{{ route('pages.team', ['league_tag' => $mt->league->league_tag, 'team_tag' => $mt->homeTeam->team_tag]) }}">{{$mt->homeTeam->team_name}}</a></h2>               
+                    <p>Home Team</p>
                 </div>
-                <div class="col-sm">
+                <div class="col-xl-4 col-sm-4 mt-3 py-3">
                     <p class="mb-1">
                         <img src="/img/flags/{{$mt->league->league_country_flag}}.png" alt="{{$mt->league->league_country_flag}}" width="25">
                         {{$mt->league->league_country}}
@@ -22,38 +23,46 @@
                     <p class="mb-1">{{\Carbon\Carbon::parse($mt->match_day)->format('d/m/Y')}}</p>
                     <p class="mb-1">{{\Carbon\Carbon::parse($mt->match_hour)->format('H:i')}}</p>
                 </div>
-                <div class="col-sm">
-                    <img src="/img/shields/{{$mt->awayTeam->team_img}}.png" alt="{{$mt->homeTeam->team_img}}" width="100">
+                <div class="col-xl-4 col-sm-4 mt-3">
+                    <img src="/img/shields/{{$mt->awayTeam->team_img}}.png" alt="{{$mt->homeTeam->team_img}}" width="20%">
                     <h2 class="mb-1"><a href="{{ route('pages.team', ['league_tag' => $mt->league->league_tag, 'team_tag' => $mt->awayTeam->team_tag]) }}">{{$mt->awayTeam->team_name}}</a></h2>
+                    <p>Away Team</p>
                 </div>              
             </div>         
         </div>
-        <hr>
-        <h4>Stats both teams</h4>
-        <div class="row">
-            <div class="col">
-                <p>AVG Goals</p>
-                <p>{{$mt->avg}}</p>
+        <h3 class="mx-2 mt-4 title-stat">Stats both teams</h3>
+        <div class="row text-center">
+            <div class="col-xl-3 col-sm-2">
+                <div class="avg-tables">
+                    <p>AVG Goals</p>
+                    <p>{{$mt->avg}}</p>
+                </div>
             </div>
-            <div class="col">
-                <p>BTS</p>
-                <p>{{$mt->bts['bts_per']}}%</p>
+            <div class="col-xl-3 col-sm-2">
+                <div class="avg-tables">
+                    <p>BTS</p>
+                    <p>{{$mt->bts['bts_per']}}%</p>
+                </div>
             </div>
-            <div class="col">
-                <p>Over 1.5</p>
-                <p>{{$mt->overs[0]['name2']}}%</p>
+            <div class="col-xl-3 col-sm-2">
+                <div class="avg-tables">
+                    <p>Over 1.5</p>
+                    <p>{{$mt->overs[0]['name2']}}%</p>
+                </div>
             </div>
-            <div class="col">
-                <p>Over 2.5</p>
-                <p>{{$mt->overs[1]['name3']}}%</p>
+            <div class="col-xl-3 col-sm-2">
+                <div class="avg-tables">
+                    <p>Over 2.5</p>
+                    <p>{{$mt->overs[1]['name3']}}%</p>
+                </div>
             </div>
         </div>
-        <p>Calculated from {{$mt->homeTeam->team_name}} Home stats and {{$mt->awayTeam->team_name}} Away stats</p>
+        <p class="text-center mb-4">Calculated from {{$mt->homeTeam->team_name}} Home stats and {{$mt->awayTeam->team_name}} Away stats</p>
         <div class="goal-market">
             <div class="row">
-                <div class="col">
-                    <h4>Over goals match</h4>
-                    <div class="goal-table p-2">
+                <div class="col-sm-6">
+                    <h3 class="mx-2 title-stat">Over goals match</h3>
+                    <div class="goal-table px-2 pb-2 pt-3">
                         <table class="table table-sm table-striped">
                             <thead class="thead-dark">
                                 <tr>
@@ -72,11 +81,13 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </div>                
+                        <p>First column is over goals are calculated from total goals in a match that {{$mt->homeTeam->team_name}} has participated.</p>
+                        <p>Second column is over goals are calculated from total goals in a match that {{$mt->awayTeam->team_name}} has participated.</p>
+                    </div>             
                 </div>
-                <div class="col">
-                    <h4>Both teams to score</h4>
-                    <div class="bts-table p-2">
+                <div class="col-sm-6">
+                    <h3 class="mx-2 title-stat">Both teams to score</h3>
+                    <div class="bts-table px-2 pb-2 pt-3">
                         <table class="table table-sm table-striped">
                             <thead class="thead-dark">
                                 <tr>
@@ -98,16 +109,17 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <p>First column is average in % for macthes involving {{$mt->homeTeam->team_name}} where both teams score.</p>
+                        <p>Second column is average in % for macthes involving {{$mt->awayTeam->team_name}} where both teams score.</p>
                     </div>               
                 </div>
             </div>
         </div>
-        <hr>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-6">
                 <div class="corner-market p-2">
-                    <h4>Over corners during the match</h4>
-                    <div class="corner-table">
+                    <h3 class="title-stat">Over corners during the match</h3>
+                    <div class="corner-table pt-3">
                         <table class="table table-sm table-striped">
                             <thead  class="thead-dark">
                                 <tr>
@@ -129,12 +141,15 @@
                             </tbody>
                         </table>
                     </div>
+                    <p>First column is average total corners per match in % for matches involving {{$mt->homeTeam->team_name}}.</p>
+                    <p>Second column is average total corners per match in % for matches involving {{$mt->awayTeam->team_name}}.</p>
+                    <p>Last column is an average percentage for total corners over, calculated between {{$mt->homeTeam->team_name}} and {{$mt->awayTeam->team_name}} for 2.</p>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-6">
                 <div class="corner-market p-2">
-                    <h4>Over cards during the match</h4>
-                    <div class="card-table">
+                    <h3 class="title-stat">Over cards during the match</h3>
+                    <div class="card-table pt-3">
                         <table class="table table-sm table-striped">
                             <thead  class="thead-dark">
                                 <tr>
@@ -156,6 +171,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <p>First column is average total cards per match in % for matches involving {{$mt->homeTeam->team_name}}.</p>
+                    <p>Second column is average total cards per match in % for matches involving {{$mt->awayTeam->team_name}}.</p>
+                    <p>Last column is an average percentage for total cards over, calculated between {{$mt->homeTeam->team_name}} and {{$mt->awayTeam->team_name}} for 2.</p>
                 </div>
             </div>
         </div>
