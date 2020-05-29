@@ -10,12 +10,14 @@ use Illuminate\Support\Arr;
 class TeamController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Muestra estadisticas de un equipo, llama a las disintas funciones y guarda
+     * los resultados en un objeto equipo.
      *
-     * @param  String  $league
+     * @param  String  $team codigo del equipo.
+     * @param  String  $leagues codigo de la liga.
      * @return \Illuminate\Http\Response
      */
-    public function show($league,$team)
+    public function show($leagues,$team)
     {
         $team = Team::where('team_tag','=',$team)->first();
         $home_ft = $this->teamResHomeFt($team->team_id);
@@ -59,9 +61,9 @@ class TeamController extends Controller
         return view('pages.team', compact('team'));
     }
     /**
-     * Calcula las victorias, empates y derrotas de un equipo cuando juega como local
+     * Calcula las victorias, empates y derrotas de un equipo cuando juega como local.
      * 
-     * @param String $team variable con el id del equipo
+     * @param String $team variable con el id del equipo.
      * @return Array devuelve el numero de victorias, empates y derrotas.
      */
     private function teamResHomeFt($team)
@@ -111,7 +113,12 @@ class TeamController extends Controller
         return ['wins'=>$wins,'draws'=>$draws,'loses'=>$loses];
     }
     /**
-     * Calcula el porcentaje de goles de un equipo en ambas partes del partido.
+     * Calcula el porcentaje de over de goles de un equipo en ambas partes del partido.
+     * 
+     * @param String $team variable con el id del equipo.
+     * @param String $league variable con el id de la liga.
+     * @param Integer $n con el numero de goles, para el calculo de over.
+     * @return Array devuelve el procentaje de goles para ambas partes del partido.
      */
     private function teamGoalsHt($league,$team,$n)
     {
@@ -127,7 +134,14 @@ class TeamController extends Controller
 
         return ['ht' => round(($ht*100)/totalMatches($league,$team)), 'ft' => round(($ft*100)/totalMatches($league,$team))];
     }
-
+    /**
+     * Calcula el porcentaje de over de goles para un equipo en un partido completo.
+     * 
+     * @param String $team variable con el id del equipo.
+     * @param String $league variable con el id de la liga.
+     * @param Integer $n con el numero de goles, para el calculo de over.
+     * @return Array devuelve el procentaje de goles para el partido completo.
+     */
     private function teamGoalsFt($league,$team,$n)
     {
         $ht = DB::table('matches')->where(function($t) use ($team){
@@ -138,7 +152,12 @@ class TeamController extends Controller
         return ['ht' => round(($ht*100)/totalMatches($league,$team))];
     }
     /**
-     * Calcula el goal average 
+     * Calcula el goal average de un equipo en un partido completo,
+     * tanto como cuando juega de local como de visitante.
+     * 
+     * @param String $league variable con el id de la liga.
+     * @param String $team variable con el id del equipo.
+     * @return Array devuelve los goles recibidos, realizados y el total de un equipo.
      */
     private function teamGoalaverageFt($league,$team)
     {
@@ -158,7 +177,14 @@ class TeamController extends Controller
 
         return ['gf_home' => $gf_home, 'gf_away' => $gf_away, 'ga_home' => $ga_home, 'ga_away' => $ga_away, 'gf_total' => $gf_total, 'ga_total' => $ga_total];
     }
-
+    /**
+     * Calcula el goal average de un equipo en las dos partes del partido, 
+     * tanto cuando juega como local como de visitante.
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array devuelve los goles recibidos, realizados y el total de un equipo
+     */
     private function teamGoalaverageHt($league,$team)
     {
         $ht_matches = DB::table('matches')->where('match_ht','=', $team)->count();
@@ -177,7 +203,13 @@ class TeamController extends Controller
 
         return ['gf_home' => $gf_home, 'gf_away' => $gf_away, 'ga_home' => $ga_home, 'ga_away' => $ga_away, 'gf_total' => $gf_total, 'ga_total' => $ga_total];
     }
-
+    /**
+     * Calcula el porcentaje de ambos marcan o ambos no marcan de un equipo para un partido completo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array devuelve el porcentaje de ambos marcan y ambos no marcan
+     */
     private function teamBtsFt($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -194,7 +226,13 @@ class TeamController extends Controller
 
         return ['yes' => $per_yes, 'no' => $per_no];
     }
-
+    /**
+     * Calcula el porcentaje de ambos marcan de un equipo en cada parte del partido
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array devuelve el porcentaje de ambos marcan y ambos no marcan
+     */
     private function teamBtsHt($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -211,11 +249,16 @@ class TeamController extends Controller
 
         return ['yes' => $per_yes, 'no' => $per_no];
     }
-
+    /**
+     * Calcula los corners totales en un partido de un equipo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array $corners devuelve el nombre y el porcentaje de corners
+     */
     private function teamCorner($league,$team)
     {
         $matches = totalMatches($league,$team);
-
         $corners = collect([]);
         $z = 7.5;
         for($m=8; $m <= 14; $m++) {
@@ -227,7 +270,13 @@ class TeamController extends Controller
 
         return $corners;
     }
-
+    /**
+     * Calcula los corners que ha recibido un equipo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array $corners devuelve el nombre y el porcentaje de corners
+     */
     private function teamCornerFor($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -241,7 +290,13 @@ class TeamController extends Controller
         }   
         return $corners;
     }
-
+    /**
+     * Calcula los corners que han hecho los oponentes del equipo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array $corners devuelve el nombre y el porcentaje de corners
+     */
     private function teamCornerAgainst($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -257,7 +312,13 @@ class TeamController extends Controller
         }
         return $corners;
     }
-
+    /**
+     * Calcula las tarjetas totales en un partido de un equipo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array $cards devuelve el nombre y el porcentaje de tarjetas
+     */
     private function teamCard($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -271,7 +332,13 @@ class TeamController extends Controller
         }
         return $cards;
     }
-
+    /**
+     * Calcula las tarjetas que ha recibido un equipo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array $cards devuelve el nombre y el porcentaje de tarjetas
+     */
     private function teamCardFor($league,$team)
     {
         $matches = totalMatches($league,$team);
@@ -285,7 +352,13 @@ class TeamController extends Controller
         }   
         return $cards;
     }
-    
+    /**
+     * Calcula las trajetas que han recibido los oponentes del equipo
+     * 
+     * @param String $league variable con el id de la liga
+     * @param String $team variable con el id del equipo
+     * @return Array $cards devuelve el nombre y el porcentaje de tarjetas
+     */
     private function teamCardAgainst($league,$team)
     {
         $matches = totalMatches($league,$team);

@@ -125,8 +125,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-center fixed-size">{{$team->goalavght['gf_total']+$team->goalavght['ga_total']}} ft</td>
-                                    <td class="text-center fixed-size">- sh</td>
+                                    <td class="text-center fixed-size">{{$team->goalavght['gf_total']+$team->goalavght['ga_total']}} fh</td>
+                                    <td class="text-center fixed-size">{{($team->goalavgft['gf_total']+$team->goalavgft['ga_total'])-($team->goalavght['gf_total']+$team->goalavght['ga_total'])}} sh</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -137,21 +137,17 @@
                 <table class="table table-sm table-bordered">
                     <thead class="thead-dark">
                         <tr>
-                            <th>BTS</th>
-                            <th class="text-center">First time</th>
-                            <th class="text-center">Second time</th>
+                            <th class="text-center" colspan="2">BTS Half-time</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border-right">Yes</td>
-                            <td class="text-center border-right">{{$team->btsht['yes']}}%</td>
-                            <td class="text-center">-</td>
+                            <td class="border-right fixed-size">Yes</td>
+                            <td class="text-center fixed-size">{{$team->btsht['yes']}}%</td>
                         </tr>
                         <tr>
-                            <td class="border-right">No</td>
-                            <td class="text-center border-right">{{$team->btsht['no']}}%</td>
-                            <td class="text-center">-</td>
+                            <td class="border-right fixed-size">No</td>
+                            <td class="text-center fixed-size">{{$team->btsht['no']}}%</td>
                         </tr>
                     </tbody>
                 </table>
